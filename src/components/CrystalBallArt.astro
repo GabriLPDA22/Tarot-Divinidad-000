@@ -1,0 +1,89 @@
+---
+interface Props {
+  class?: string;
+  opacity?: number;
+}
+const { class: className = "", opacity = 0.08 } = Astro.props;
+---
+
+<div
+  class:list={[
+    "pointer-events-none absolute select-none hero-deco",
+    className,
+  ]}
+  style={`--deco-opacity: ${opacity}; color: #B8A26A;`}
+  aria-hidden="true"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 600 800"
+    fill="none"
+    stroke="currentColor"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="h-full w-full"
+    aria-hidden="true"
+  >
+    <defs>
+      <style>
+        .cb-lp { stroke-width: 1.5; }
+        .cb-lf { stroke-width: 0.75; opacity: 0.7; }
+        .cb-ld { stroke-width: 0.75; stroke-dasharray: 4 10; opacity: 0.5; }
+        .cb-fill { fill: currentColor; stroke: none; }
+      </style>
+    </defs>
+
+    <path d="M 120 200 A 300 300 0 0 1 520 280" class="cb-ld" />
+    <path d="M 80 600 A 350 350 0 0 0 450 720" class="cb-ld" />
+    <path d="M 480 150 A 250 250 0 0 1 500 550" class="cb-ld" stroke-dasharray="2 6" />
+    <path d="M 200 680 Q 250 750 350 700" class="cb-ld" />
+
+    <g transform="translate(140, 160) rotate(-20)">
+      <path d="M 0 -30 A 35 35 0 1 0 0 30 A 25 25 0 1 1 0 -30 Z" class="cb-lp" />
+      <circle cx="-10" cy="0" r="2" class="cb-fill" />
+    </g>
+
+    <g transform="translate(460, 620) rotate(15)">
+      <rect x="-30" y="-30" width="60" height="60" class="cb-lp" />
+      <circle cx="0" cy="0" r="15" class="cb-lf" />
+      <path d="M -30 -30 L 30 30 M -30 30 L 30 -30" class="cb-lf" />
+    </g>
+
+    <g transform="translate(480, 220)">
+      <circle cx="0" cy="0" r="20" class="cb-lp" />
+      <line x1="-30" y1="0" x2="30" y2="0" class="cb-lf" />
+      <circle cx="0" cy="0" r="4" class="cb-fill" />
+    </g>
+
+    <g transform="translate(300, 520)">
+      <path d="M -70 0 L 70 0 L 50 35 L -50 35 Z" class="cb-lp" />
+      <path d="M -50 35 L 50 35 L 30 55 L -30 55 Z" class="cb-lp" />
+      <line x1="-90" y1="65" x2="90" y2="65" class="cb-lp" />
+      <line x1="-110" y1="80" x2="110" y2="80" class="cb-lf" />
+      <circle cx="0" cy="18" r="4" class="cb-lf" />
+    </g>
+
+    <circle cx="300" cy="360" r="160" class="cb-lp" />
+    <circle cx="300" cy="360" r="140" class="cb-lf" />
+
+    <g transform="translate(300, 360)">
+      <path d="M 0 -100 L 60 0 L 0 100 L -60 0 Z" class="cb-lp" />
+      <path d="M -40 0 Q 0 -35 40 0 Q 0 35 -40 0 Z" class="cb-lp" />
+      <circle cx="0" cy="0" r="12" class="cb-lp" />
+      <circle cx="0" cy="0" r="3" class="cb-fill" />
+      <line x1="0" y1="-120" x2="0" y2="-140" class="cb-lf" />
+      <line x1="0" y1="120" x2="0" y2="140" class="cb-lf" />
+      <line x1="-120" y1="0" x2="-140" y2="0" class="cb-lf" />
+      <line x1="120" y1="0" x2="140" y2="0" class="cb-lf" />
+    </g>
+
+    <circle cx="120" cy="380" r="1.5" class="cb-fill" />
+    <circle cx="480" cy="400" r="2" class="cb-fill" />
+    <circle cx="220" cy="120" r="1.5" class="cb-fill" />
+    <circle cx="380" cy="740" r="2" class="cb-fill" />
+    <circle cx="180" cy="600" r="1" class="cb-fill" />
+
+    <path d="M 115 380 L 125 380 M 120 375 L 120 385" class="cb-lf" />
+    <path d="M 475 400 L 485 400 M 480 395 L 480 405" class="cb-lf" />
+  </svg>
+</div>

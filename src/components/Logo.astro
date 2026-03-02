@@ -1,0 +1,56 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className = "" } = Astro.props;
+---
+
+<a
+  href="/"
+  class:list={["group block shrink-0 transition-opacity hover:opacity-85", className]}
+  aria-label="Tarot Divinidad 000 — Inicio"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 520 150"
+    class="h-12 w-auto sm:h-14 md:h-16 lg:h-[70px] 2xl:h-20 3xl:h-[100px]"
+    aria-hidden="true"
+  >
+    <defs>
+      <style>
+        .logo-g { stroke: #B8A26A; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+        .logo-gf { fill: #B8A26A; }
+      </style>
+    </defs>
+
+    <!-- Icon: diamond + eye -->
+    <g transform="translate(65, 75)">
+      <path class="logo-g" stroke-width="0.7" opacity="0.5" d="M 0 -60 L 50 0 L 0 60 L -50 0 Z"/>
+      <path class="logo-g" stroke-width="1.5" d="M 0 -45 L 35 0 L 0 45 L -35 0 Z"/>
+      <path class="logo-g" stroke-width="2" d="M -22 0 Q 0 -18 22 0 Q 0 18 -22 0 Z"/>
+      <circle cx="0" cy="0" r="7" class="logo-g" stroke-width="1.2"/>
+      <path class="logo-gf" d="M -2 -4 A 5.5 5.5 0 1 0 4 4 A 4.5 4.5 0 1 1 -2 -4 Z"/>
+      <line x1="0" y1="-25" x2="0" y2="-35" class="logo-g" stroke-width="1"/>
+      <line x1="0" y1="25" x2="0" y2="35" class="logo-g" stroke-width="1"/>
+      <line x1="-18" y1="-18" x2="-25" y2="-25" class="logo-g" stroke-width="1"/>
+      <line x1="18" y1="18" x2="25" y2="25" class="logo-g" stroke-width="1"/>
+      <line x1="-18" y1="18" x2="-25" y2="25" class="logo-g" stroke-width="1"/>
+      <line x1="18" y1="-18" x2="25" y2="-25" class="logo-g" stroke-width="1"/>
+      <circle cx="0" cy="-70" r="1.5" class="logo-gf"/>
+      <circle cx="0" cy="70" r="1.5" class="logo-gf"/>
+      <circle cx="-60" cy="0" r="1.5" class="logo-gf"/>
+      <circle cx="60" cy="0" r="1.5" class="logo-gf"/>
+    </g>
+
+    <!-- Text -->
+    <g transform="translate(145, 82)">
+      <text x="0" y="-5" font-size="32" fill="#F2F0EA"
+        font-family="'Montserrat', sans-serif" letter-spacing="5" font-weight="600">TAROT DIVINIDAD</text>
+      <line x1="2" y1="12" x2="360" y2="12" class="logo-g" stroke-width="0.8" opacity="0.4"/>
+      <circle cx="181" cy="12" r="2.5" class="logo-gf"/>
+      <path d="M 175 12 L 181 8 L 187 12 L 181 16 Z" class="logo-gf"/>
+      <text x="135" y="38" font-size="16" fill="#B8A26A"
+        font-family="'Montserrat', sans-serif" letter-spacing="18" font-weight="300">0 0 0</text>
+    </g>
+  </svg>
+</a>

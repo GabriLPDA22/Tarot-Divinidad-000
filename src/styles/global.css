@@ -1,0 +1,96 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #0B0B0F;
+  --color-text: #F2F0EA;
+  --color-gold: #B8A26A;
+  --color-gold-light: #D4C28A;
+  --color-gold-dark: #8A7A4E;
+  --font-heading: "Montserrat", sans-serif;
+  --font-body: "Questrial", sans-serif;
+}
+
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgba(184, 162, 106, 0.3);
+    color: var(--color-text);
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2
+           px-8 py-3.5 rounded-sm
+           bg-brand-gold text-brand-bg
+           font-heading font-semibold text-sm tracking-widest uppercase
+           transition-all duration-300 ease-out
+           hover:bg-brand-gold-light hover:shadow-lg hover:shadow-brand-gold/20
+           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2
+           px-8 py-3.5 rounded-sm
+           border border-brand-text/30 text-brand-text
+           font-heading font-semibold text-sm tracking-widest uppercase
+           transition-all duration-300 ease-out
+           hover:bg-brand-text/10 hover:border-brand-text/50
+           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-text;
+  }
+}
+
+.hero-deco {
+  opacity: calc(var(--deco-opacity, 0.08) * 0.35);
+  transition: opacity 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .hero-deco {
+    opacity: calc(var(--deco-opacity, 0.08) * 0.7);
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-deco {
+    opacity: var(--deco-opacity, 0.08);
+  }
+}
+
+@media (min-width: 2560px) {
+  .btn-primary,
+  .btn-secondary {
+    padding: 1.1rem 2.8rem;
+    font-size: 0.95rem;
+    gap: 0.65rem;
+  }
+
+  .btn-primary svg,
+  .btn-secondary svg {
+    width: 1.2rem;
+    height: 1.2rem;
+  }
+}

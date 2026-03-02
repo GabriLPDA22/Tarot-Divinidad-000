@@ -1,0 +1,93 @@
+---
+interface Props {
+  class?: string;
+  opacity?: number;
+}
+const { class: className = "", opacity = 0.08 } = Astro.props;
+---
+
+<div
+  class:list={[
+    "pointer-events-none absolute select-none hero-deco",
+    className,
+  ]}
+  style={`--deco-opacity: ${opacity}; color: #B8A26A;`}
+  aria-hidden="true"
+>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 500 800"
+    fill="none"
+    stroke="currentColor"
+    stroke-width="1.2"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    class="h-full w-full"
+    aria-hidden="true"
+  >
+    <defs>
+      <g id="card-base">
+        <rect x="0" y="0" width="180" height="300" rx="6" />
+        <rect x="15" y="15" width="150" height="270" rx="3" opacity="0.5" stroke-width="0.8"/>
+        <path d="M15,40 L15,15 L40,15 M165,40 L165,15 L140,15 M15,260 L15,285 L40,285 M165,260 L165,285 L140,285" opacity="0.6" stroke-width="0.8"/>
+      </g>
+    </defs>
+
+    <!-- Card 1: Eye / Sun -->
+    <g transform="translate(160, 40)">
+      <use href="#card-base"/>
+      <g transform="translate(90, 150)">
+        <path d="M-45,0 C-45,-25 -22,-40 0,-40 C22,-40 45,-25 45,0 C45,25 22,40 0,40 C-22,40 -45,25 -45,0 Z" />
+        <circle cx="0" cy="0" r="14" />
+        <circle cx="0" cy="0" r="4" fill="currentColor"/>
+        <g opacity="0.7">
+          <line x1="0" y1="-55" x2="0" y2="-75"/>
+          <line x1="0" y1="55" x2="0" y2="75"/>
+          <line x1="-55" y1="0" x2="-75" y2="0"/>
+          <line x1="55" y1="0" x2="75" y2="0"/>
+          <line x1="-38" y1="-38" x2="-52" y2="-52"/>
+          <line x1="38" y1="38" x2="52" y2="52"/>
+          <line x1="-38" y1="38" x2="-52" y2="52"/>
+          <line x1="38" y1="-38" x2="52" y2="-52"/>
+        </g>
+      </g>
+    </g>
+
+    <!-- Card 2: Duality -->
+    <g transform="translate(40, 260) rotate(-4)">
+      <use href="#card-base"/>
+      <g transform="translate(90, 150)">
+        <path d="M-25,-50 A35,35 0 0,0 -25,50 A55,55 0 0,1 -25,-50 Z" />
+        <path d="M25,-50 A35,35 0 0,1 25,50 A55,55 0 0,0 25,-50 Z" />
+        <line x1="0" y1="-70" x2="0" y2="70"/>
+        <circle cx="0" cy="0" r="6" opacity="0.5"/>
+        <circle cx="0" cy="-75" r="4"/>
+        <circle cx="0" cy="75" r="4"/>
+      </g>
+    </g>
+
+    <!-- Card 3: Geometry -->
+    <g transform="translate(280, 460) rotate(2)">
+      <use href="#card-base"/>
+      <g transform="translate(90, 150)">
+        <circle cx="0" cy="-30" r="20" />
+        <rect x="-20" y="10" width="40" height="40" transform="rotate(45)" />
+        <path d="M-30,70 L0,30 L30,70 Z" />
+        <line x1="0" y1="-10" x2="0" y2="10" opacity="0.5"/>
+        <line x1="0" y1="40" x2="0" y2="60" opacity="0.5"/>
+      </g>
+    </g>
+
+    <!-- Sparkle accents -->
+    <g opacity="0.3" stroke-width="0.8">
+      <circle cx="100" cy="150" r="1" fill="currentColor"/>
+      <circle cx="420" cy="200" r="1.5" fill="currentColor"/>
+      <circle cx="300" cy="400" r="1" fill="currentColor"/>
+      <circle cx="50" cy="600" r="1.5" fill="currentColor"/>
+      <circle cx="450" cy="700" r="1" fill="currentColor"/>
+      <path d="M120,100 Q180,150 140,200" stroke-dasharray="2 4" fill="none"/>
+      <path d="M380,300 Q420,350 350,450" stroke-dasharray="2 4" fill="none"/>
+      <path d="M100,550 Q150,650 200,600" stroke-dasharray="2 4" fill="none"/>
+    </g>
+  </svg>
+</div>
