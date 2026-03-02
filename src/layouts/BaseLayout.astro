@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import FrameBorder from "../components/FrameBorder.astro";
 import LoaderOverlay from "../components/LoaderOverlay.astro";
+import CookieBanner from "../components/CookieBanner.astro";
 import { siteConfig } from "../content/site";
 
 interface Props {
@@ -23,6 +24,15 @@ const {
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0B0B0F" />
 
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content={siteConfig.name} />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -30,11 +40,15 @@ const {
       rel="stylesheet"
     />
 
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
   </head>
   <body class="min-h-screen bg-brand-bg text-brand-text font-body">
     <LoaderOverlay duration={4000} />
     <FrameBorder />
-    <slot />
+    <div class="relative z-[1]">
+      <slot />
+    </div>
+    <CookieBanner />
   </body>
 </html>

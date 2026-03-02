@@ -1,8 +1,10 @@
 ---
 interface Props {
   class?: string;
+  centered?: boolean;
 }
-const { class: className = "" } = Astro.props;
+const { class: className = "", centered = false } = Astro.props;
+const viewBox = centered ? "0 0 652 150" : "0 0 520 150";
 ---
 
 <a
@@ -12,7 +14,7 @@ const { class: className = "" } = Astro.props;
 >
   <svg
     xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 520 150"
+    viewBox={viewBox}
     class="h-12 w-auto sm:h-14 md:h-16 lg:h-[70px] 2xl:h-20 3xl:h-[100px]"
     aria-hidden="true"
   >
@@ -49,8 +51,12 @@ const { class: className = "" } = Astro.props;
       <line x1="2" y1="12" x2="360" y2="12" class="logo-g" stroke-width="0.8" opacity="0.4"/>
       <circle cx="181" cy="12" r="2.5" class="logo-gf"/>
       <path d="M 175 12 L 181 8 L 187 12 L 181 16 Z" class="logo-gf"/>
-      <text x="135" y="38" font-size="16" fill="#B8A26A"
-        font-family="'Montserrat', sans-serif" letter-spacing="18" font-weight="300">0 0 0</text>
+      <text y="38" font-size="16" fill="#B8A26A"
+        font-family="'Montserrat', sans-serif" font-weight="300" text-anchor="middle">
+        <tspan x="151">0</tspan>
+        <tspan x="181">0</tspan>
+        <tspan x="211">0</tspan>
+      </text>
     </g>
   </svg>
 </a>

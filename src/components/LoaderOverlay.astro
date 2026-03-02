@@ -95,6 +95,14 @@ const { duration = 4000 } = Astro.props;
   (function () {
     var el = document.querySelector(".loader-overlay");
     if (!el) return;
+
+    var seen = sessionStorage.getItem("loader-seen");
+    if (seen) {
+      el.remove();
+      return;
+    }
+
+    sessionStorage.setItem("loader-seen", "1");
     setTimeout(function () {
       el.style.opacity = "0";
       setTimeout(function () { el.remove(); }, 700);

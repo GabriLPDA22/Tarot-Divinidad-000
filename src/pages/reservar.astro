@@ -1,0 +1,234 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import DecoArt from "../components/DecoArt.astro";
+import { siteConfig } from "../content/site";
+import { buildWhatsAppUrl } from "../utils/whatsapp";
+
+const { tiers, reservaLinks, whatsapp } = siteConfig;
+
+function getWhatsAppUrl(duration: number, price: number) {
+  const msg = whatsapp.messageTemplate
+    .replace("{duracion}", `${duration} min`)
+    .replace("{precio}", `${price}€`);
+  return buildWhatsAppUrl(whatsapp.phone, msg);
+}
+
+const faqs = [
+  {
+    q: "¿Cómo funciona la reserva?",
+    a: "Elige la tirada que mejor se adapte a ti, haz clic en \"Reservar\" y selecciona el día y hora que prefieras. También puedes escribirnos por WhatsApp y te ayudamos a encontrar hueco.",
+  },
+  {
+    q: "¿Recibiré confirmación?",
+    a: "Sí. Una vez elijas tu horario, recibirás un email de confirmación automático con los datos de tu consulta. Si reservas por WhatsApp, te confirmaremos personalmente.",
+  },
+  {
+    q: "¿Puedo cambiar o cancelar la cita?",
+    a: "Por supuesto. Puedes modificar o cancelar tu cita desde el propio enlace de confirmación o escribiéndonos por WhatsApp con al menos 24 horas de antelación.",
+  },
+];
+---
+
+<BaseLayout title="Reservar — Tarot Divinidad 000">
+  <Header />
+  <main class="relative min-h-screen overflow-hidden bg-brand-bg pt-36 pb-20 sm:pt-40 md:pt-44 md:pb-28 lg:pt-48 2xl:pt-52 3xl:pt-60 3xl:pb-36">
+    <DecoArt
+      variant="crystal-ball"
+      class="left-[-3rem] top-[5%] z-[0] h-[300px] w-[300px] md:left-[-1rem] md:h-[400px] md:w-[400px] 3xl:h-[520px] 3xl:w-[520px]"
+      opacity={0.07}
+    />
+    <DecoArt
+      variant="key"
+      class="right-[-3rem] bottom-[8%] z-[0] h-[300px] w-[300px] md:right-[-1rem] md:h-[400px] md:w-[400px] 3xl:h-[520px] 3xl:w-[520px]"
+      opacity={0.07}
+    />
+
+    <div class="relative z-10 mx-auto max-w-6xl px-6 md:px-8 3xl:max-w-7xl 3xl:px-12">
+      <!-- Title -->
+      <h1 class="text-center font-heading text-sm font-semibold uppercase tracking-[0.25em] text-brand-gold md:text-base 3xl:text-lg">
+        Reserva tu consulta
+      </h1>
+
+      <div class="mx-auto mt-5 flex items-center justify-center gap-4" aria-hidden="true">
+        <span class="h-px w-12 bg-gradient-to-r from-transparent to-brand-gold/30"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4 text-brand-gold/60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z"/>
+          <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+        </svg>
+        <span class="h-px w-12 bg-gradient-to-l from-transparent to-brand-gold/30"></span>
+      </div>
+
+      <p class="mx-auto mt-6 max-w-xl text-center text-base leading-relaxed text-brand-text/75 md:mt-8 md:text-lg">
+        Elige la tirada que necesitas y selecciona día y hora en el calendario. Tu reserva se confirma automáticamente.
+      </p>
+
+      <!-- Tarot cards grid -->
+      <div class="mt-14 grid grid-cols-2 gap-4 lg:grid-cols-4 md:mt-16 md:gap-6 3xl:mt-20 3xl:gap-8">
+        {tiers.map((tier) => {
+          const bookingUrl = reservaLinks[tier.linkKey];
+          const waUrl = getWhatsAppUrl(tier.duration, tier.price);
+
+          return (
+            <article class="tarot-price-card group relative transition-all duration-500 hover:-translate-y-2">
+              <div class="relative" style="aspect-ratio: 320 / 520;">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 320 520"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="absolute inset-0 h-full w-full text-brand-gold transition-all duration-500 group-hover:drop-shadow-[0_0_20px_rgba(184,162,106,0.15)]"
+                >
+                  <rect x="10" y="10" width="300" height="500" rx="12" stroke-width="2" class="transition-all duration-500 group-hover:stroke-brand-gold-light"/>
+                  <rect x="25" y="25" width="270" height="470" rx="6" stroke-width="1" opacity="0.5"/>
+                  <path d="M 25 45 L 25 25 L 45 25 M 295 45 L 295 25 L 275 25 M 25 475 L 25 495 L 45 495 M 295 475 L 295 495 L 275 495" stroke-width="1.5"/>
+                  <circle cx="25" cy="25" r="2" fill="currentColor"/><circle cx="295" cy="25" r="2" fill="currentColor"/>
+                  <circle cx="25" cy="495" r="2" fill="currentColor"/><circle cx="295" cy="495" r="2" fill="currentColor"/>
+                  <path d="M 40 140 L 280 140" stroke-width="0.75" opacity="0.3"/>
+                  <path d="M 60 140 A 100 100 0 0 1 260 140" stroke-width="0.75" stroke-dasharray="3 5" opacity="0.6"/>
+                  <line x1="60" y1="260" x2="260" y2="260" stroke-width="1" stroke-dasharray="2 4" opacity="0.5"/>
+                  <path d="M 160 257 L 163 260 L 160 263 L 157 260 Z" fill="currentColor"/>
+                  <path d="M 160 480 L 165 485 L 160 490 L 155 485 Z" fill="currentColor"/>
+                  <line x1="135" y1="485" x2="145" y2="485" stroke-width="1" opacity="0.5"/>
+                  <line x1="175" y1="485" x2="185" y2="485" stroke-width="1" opacity="0.5"/>
+
+                  {tier.card === "eye" && (
+                    <g transform="translate(160, 140)">
+                      <path d="M -50 0 Q 0 -40 50 0 Q 0 40 -50 0 Z" stroke-width="2"/>
+                      <circle cx="0" cy="0" r="16" stroke-width="1.5"/>
+                      <circle cx="0" cy="0" r="4" fill="currentColor"/>
+                      <line x1="0" y1="-55" x2="0" y2="-75" stroke-width="1"/>
+                      <line x1="-38" y1="-38" x2="-52" y2="-52" stroke-width="1"/>
+                      <line x1="38" y1="-38" x2="52" y2="-52" stroke-width="1"/>
+                      <line x1="0" y1="25" x2="0" y2="45" stroke-width="1" stroke-dasharray="2 4"/>
+                      <line x1="-20" y1="20" x2="-35" y2="35" stroke-width="1" stroke-dasharray="2 4"/>
+                      <line x1="20" y1="20" x2="35" y2="35" stroke-width="1" stroke-dasharray="2 4"/>
+                    </g>
+                  )}
+                  {tier.card === "moon" && (
+                    <g transform="translate(160, 140)">
+                      <path d="M -15 -45 A 50 50 0 1 0 35 35 A 40 40 0 1 1 -15 -45 Z" fill="currentColor" opacity="0.1"/>
+                      <path d="M -15 -45 A 50 50 0 1 0 35 35 A 40 40 0 1 1 -15 -45 Z" stroke-width="2"/>
+                      <path d="M 15 20 L 18 25 L 25 25 L 19 29 L 21 35 L 15 31 L 9 35 L 11 29 L 5 25 L 12 25 Z" fill="currentColor" stroke="none"/>
+                      <circle cx="-45" cy="-20" r="1.5" fill="currentColor"/>
+                      <circle cx="45" cy="-35" r="2" fill="currentColor"/>
+                      <circle cx="-35" cy="45" r="1" fill="currentColor"/>
+                    </g>
+                  )}
+                  {tier.card === "star" && (
+                    <g transform="translate(160, 140)">
+                      <circle cx="0" cy="0" r="70" stroke-width="1" stroke-dasharray="3 8" opacity="0.6"/>
+                      <circle cx="0" cy="0" r="22" stroke-width="1" opacity="0.4"/>
+                      <path d="M 0 -55 L 10 -15 L 50 -15 L 15 5 L 25 45 L 0 20 L -25 45 L -15 5 L -50 -15 L -10 -15 Z" stroke-width="1.5" stroke-linejoin="miter"/>
+                      <circle cx="0" cy="0" r="4" fill="currentColor"/>
+                      <path d="M 0 -85 L 0 -65 M 0 65 L 0 85 M -85 0 L -65 0 M 65 0 L 85 0" stroke-width="1.5"/>
+                    </g>
+                  )}
+                  {tier.card === "sacred" && (
+                    <g transform="translate(160, 140)">
+                      <path d="M 0 -65 L 65 0 L 0 65 L -65 0 Z" stroke-width="1.5"/>
+                      <path d="M 0 -50 L 50 0 L 0 50 L -50 0 Z" stroke-width="1" opacity="0.5"/>
+                      <circle cx="0" cy="0" r="35" stroke-width="1.5"/>
+                      <circle cx="0" cy="-15" r="20" stroke-width="1" opacity="0.6"/>
+                      <circle cx="0" cy="15" r="20" stroke-width="1" opacity="0.6"/>
+                      <circle cx="-15" cy="0" r="20" stroke-width="1" opacity="0.6"/>
+                      <circle cx="15" cy="0" r="20" stroke-width="1" opacity="0.6"/>
+                      <circle cx="0" cy="0" r="5" fill="currentColor"/>
+                      <line x1="0" y1="-85" x2="0" y2="-75" stroke-width="1"/>
+                      <line x1="0" y1="75" x2="0" y2="85" stroke-width="1"/>
+                    </g>
+                  )}
+                </svg>
+
+                <div class="absolute inset-0 flex flex-col items-center justify-end px-3 pb-[12%] pt-[52%] text-center md:px-4 md:pb-[14%] md:pt-[53%]">
+                  <p class="font-heading text-base font-bold tracking-wide text-brand-text sm:text-lg md:text-2xl 3xl:text-3xl">
+                    {tier.duration} <span class="text-[10px] font-normal text-brand-text/50 sm:text-xs md:text-base">min</span>
+                  </p>
+
+                  <p class="mt-0.5 font-heading text-2xl font-bold text-brand-gold sm:text-3xl md:mt-1 md:text-4xl 3xl:text-5xl">
+                    {tier.price}<span class="text-sm font-normal sm:text-base md:text-xl">€</span>
+                  </p>
+
+                  <p class="mt-1 text-[8px] uppercase tracking-wider text-brand-text/45 sm:text-[9px] md:mt-1.5 md:text-xs 3xl:text-sm">
+                    Consulta personalizada
+                  </p>
+
+                  <div class="mt-2 flex flex-col items-center gap-1.5 sm:mt-3 sm:gap-2 md:mt-3">
+                    <a
+                      href={bookingUrl}
+                      class="inline-flex w-full items-center justify-center gap-1 rounded-sm border border-brand-gold/30 bg-brand-gold/5 px-3 py-1 font-heading text-[8px] font-semibold uppercase tracking-widest text-brand-gold transition-all duration-300 hover:bg-brand-gold hover:text-brand-bg hover:shadow-lg hover:shadow-brand-gold/20 sm:gap-1.5 sm:px-4 sm:py-1.5 sm:text-[10px] md:px-5 md:py-2 md:text-xs 3xl:px-7 3xl:py-2.5 3xl:text-sm"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-2.5 w-2.5 sm:h-3 sm:w-3 md:h-3.5 md:w-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+                        <line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line>
+                        <line x1="3" y1="10" x2="21" y2="10"></line>
+                      </svg>
+                      Reservar
+                    </a>
+                    <a
+                      href={waUrl}
+                      class="inline-flex w-full items-center justify-center gap-1 rounded-sm border border-brand-text/10 px-3 py-1 font-heading text-[7px] font-medium uppercase tracking-widest text-brand-text/50 transition-all duration-300 hover:border-brand-text/30 hover:text-brand-text/80 sm:gap-1.5 sm:px-4 sm:py-1.5 sm:text-[9px] md:px-5 md:py-1.5 md:text-[10px] 3xl:px-7 3xl:py-2 3xl:text-xs"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-2 w-2 sm:h-2.5 sm:w-2.5 md:h-3 md:w-3" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                      </svg>
+                      WhatsApp
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </article>
+          );
+        })}
+      </div>
+
+      <!-- FAQ -->
+      <div class="mx-auto mt-24 max-w-3xl md:mt-32">
+        <h2 class="text-center font-heading text-sm font-semibold uppercase tracking-[0.25em] text-brand-gold md:text-base">
+          Preguntas frecuentes
+        </h2>
+
+        <div class="mx-auto mt-5 flex items-center justify-center gap-4" aria-hidden="true">
+          <span class="h-px w-8 bg-gradient-to-r from-transparent to-brand-gold/30"></span>
+          <span class="h-1.5 w-1.5 rounded-full bg-brand-gold/30"></span>
+          <span class="h-px w-8 bg-gradient-to-l from-transparent to-brand-gold/30"></span>
+        </div>
+
+        <div class="mt-10 space-y-4 md:mt-12">
+          {faqs.map((faq) => (
+            <details class="group rounded-lg border border-brand-gold/10 bg-[#0e0e14] transition-colors hover:border-brand-gold/20">
+              <summary class="flex cursor-pointer items-center justify-between px-5 py-4 font-heading text-sm font-medium text-brand-text/90 md:px-6 md:py-5 md:text-base">
+                <span>{faq.q}</span>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-4 w-4 shrink-0 text-brand-gold/50 transition-transform duration-300 group-open:rotate-45"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+              </summary>
+              <div class="border-t border-brand-gold/5 px-5 pb-5 pt-4 md:px-6">
+                <p class="text-[0.9375rem] leading-relaxed text-brand-text/65">{faq.a}</p>
+              </div>
+            </details>
+          ))}
+        </div>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

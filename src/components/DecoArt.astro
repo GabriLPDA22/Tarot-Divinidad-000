@@ -1,0 +1,192 @@
+---
+export type DecoVariant = "cards" | "crystal-ball" | "sun-moon" | "cosmic-clock" | "lotus" | "key";
+
+interface Props {
+  variant: DecoVariant;
+  class?: string;
+  opacity?: number;
+}
+const { variant, class: className = "", opacity = 0.08 } = Astro.props;
+---
+
+<div
+  class:list={["pointer-events-none absolute select-none hero-deco", className]}
+  style={`--deco-opacity: ${opacity}; color: #B8A26A;`}
+  aria-hidden="true"
+>
+  {variant === "cards" && (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 800" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class="h-full w-full">
+      <defs>
+        <g id="deco-card-base">
+          <rect x="0" y="0" width="180" height="300" rx="6" />
+          <rect x="15" y="15" width="150" height="270" rx="3" opacity="0.5" stroke-width="0.8"/>
+          <path d="M15,40 L15,15 L40,15 M165,40 L165,15 L140,15 M15,260 L15,285 L40,285 M165,260 L165,285 L140,285" opacity="0.6" stroke-width="0.8"/>
+        </g>
+      </defs>
+      <g transform="translate(160, 40)">
+        <use href="#deco-card-base"/>
+        <g transform="translate(90, 150)">
+          <path d="M-45,0 C-45,-25 -22,-40 0,-40 C22,-40 45,-25 45,0 C45,25 22,40 0,40 C-22,40 -45,25 -45,0 Z" />
+          <circle cx="0" cy="0" r="14" />
+          <circle cx="0" cy="0" r="4" fill="currentColor"/>
+          <g opacity="0.7">
+            <line x1="0" y1="-55" x2="0" y2="-75"/><line x1="0" y1="55" x2="0" y2="75"/>
+            <line x1="-55" y1="0" x2="-75" y2="0"/><line x1="55" y1="0" x2="75" y2="0"/>
+            <line x1="-38" y1="-38" x2="-52" y2="-52"/><line x1="38" y1="38" x2="52" y2="52"/>
+            <line x1="-38" y1="38" x2="-52" y2="52"/><line x1="38" y1="-38" x2="52" y2="-52"/>
+          </g>
+        </g>
+      </g>
+      <g transform="translate(40, 260) rotate(-4)">
+        <use href="#deco-card-base"/>
+        <g transform="translate(90, 150)">
+          <path d="M-25,-50 A35,35 0 0,0 -25,50 A55,55 0 0,1 -25,-50 Z" />
+          <path d="M25,-50 A35,35 0 0,1 25,50 A55,55 0 0,0 25,-50 Z" />
+          <line x1="0" y1="-70" x2="0" y2="70"/><circle cx="0" cy="0" r="6" opacity="0.5"/>
+          <circle cx="0" cy="-75" r="4"/><circle cx="0" cy="75" r="4"/>
+        </g>
+      </g>
+      <g transform="translate(280, 460) rotate(2)">
+        <use href="#deco-card-base"/>
+        <g transform="translate(90, 150)">
+          <circle cx="0" cy="-30" r="20" />
+          <rect x="-20" y="10" width="40" height="40" transform="rotate(45)" />
+          <path d="M-30,70 L0,30 L30,70 Z" />
+          <line x1="0" y1="-10" x2="0" y2="10" opacity="0.5"/><line x1="0" y1="40" x2="0" y2="60" opacity="0.5"/>
+        </g>
+      </g>
+      <g opacity="0.3" stroke-width="0.8">
+        <circle cx="100" cy="150" r="1" fill="currentColor"/><circle cx="420" cy="200" r="1.5" fill="currentColor"/>
+        <circle cx="300" cy="400" r="1" fill="currentColor"/><circle cx="50" cy="600" r="1.5" fill="currentColor"/>
+        <circle cx="450" cy="700" r="1" fill="currentColor"/>
+        <path d="M120,100 Q180,150 140,200" stroke-dasharray="2 4" fill="none"/>
+        <path d="M380,300 Q420,350 350,450" stroke-dasharray="2 4" fill="none"/>
+        <path d="M100,550 Q150,650 200,600" stroke-dasharray="2 4" fill="none"/>
+      </g>
+    </svg>
+  )}
+
+  {variant === "crystal-ball" && (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="h-full w-full">
+      <defs>
+        <style>.cb-lp{stroke-width:1.5}.cb-lf{stroke-width:.75;opacity:.7}.cb-ld{stroke-width:.75;stroke-dasharray:4 10;opacity:.5}.cb-fill{fill:currentColor;stroke:none}</style>
+      </defs>
+      <path d="M 120 200 A 300 300 0 0 1 520 280" class="cb-ld"/>
+      <path d="M 80 600 A 350 350 0 0 0 450 720" class="cb-ld"/>
+      <path d="M 480 150 A 250 250 0 0 1 500 550" class="cb-ld" stroke-dasharray="2 6"/>
+      <path d="M 200 680 Q 250 750 350 700" class="cb-ld"/>
+      <g transform="translate(140, 160) rotate(-20)">
+        <path d="M 0 -30 A 35 35 0 1 0 0 30 A 25 25 0 1 1 0 -30 Z" class="cb-lp"/>
+        <circle cx="-10" cy="0" r="2" class="cb-fill"/>
+      </g>
+      <g transform="translate(460, 620) rotate(15)">
+        <rect x="-30" y="-30" width="60" height="60" class="cb-lp"/>
+        <circle cx="0" cy="0" r="15" class="cb-lf"/>
+        <path d="M -30 -30 L 30 30 M -30 30 L 30 -30" class="cb-lf"/>
+      </g>
+      <g transform="translate(480, 220)">
+        <circle cx="0" cy="0" r="20" class="cb-lp"/><line x1="-30" y1="0" x2="30" y2="0" class="cb-lf"/>
+        <circle cx="0" cy="0" r="4" class="cb-fill"/>
+      </g>
+      <g transform="translate(300, 520)">
+        <path d="M -70 0 L 70 0 L 50 35 L -50 35 Z" class="cb-lp"/>
+        <path d="M -50 35 L 50 35 L 30 55 L -30 55 Z" class="cb-lp"/>
+        <line x1="-90" y1="65" x2="90" y2="65" class="cb-lp"/><line x1="-110" y1="80" x2="110" y2="80" class="cb-lf"/>
+        <circle cx="0" cy="18" r="4" class="cb-lf"/>
+      </g>
+      <circle cx="300" cy="360" r="160" class="cb-lp"/><circle cx="300" cy="360" r="140" class="cb-lf"/>
+      <g transform="translate(300, 360)">
+        <path d="M 0 -100 L 60 0 L 0 100 L -60 0 Z" class="cb-lp"/>
+        <path d="M -40 0 Q 0 -35 40 0 Q 0 35 -40 0 Z" class="cb-lp"/>
+        <circle cx="0" cy="0" r="12" class="cb-lp"/><circle cx="0" cy="0" r="3" class="cb-fill"/>
+        <line x1="0" y1="-120" x2="0" y2="-140" class="cb-lf"/><line x1="0" y1="120" x2="0" y2="140" class="cb-lf"/>
+        <line x1="-120" y1="0" x2="-140" y2="0" class="cb-lf"/><line x1="120" y1="0" x2="140" y2="0" class="cb-lf"/>
+      </g>
+      <circle cx="120" cy="380" r="1.5" class="cb-fill"/><circle cx="480" cy="400" r="2" class="cb-fill"/>
+      <circle cx="220" cy="120" r="1.5" class="cb-fill"/><circle cx="380" cy="740" r="2" class="cb-fill"/>
+      <circle cx="180" cy="600" r="1" class="cb-fill"/>
+      <path d="M 115 380 L 125 380 M 120 375 L 120 385" class="cb-lf"/>
+      <path d="M 475 400 L 485 400 M 480 395 L 480 405" class="cb-lf"/>
+    </svg>
+  )}
+
+  {variant === "sun-moon" && (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="h-full w-full">
+      <circle cx="120" cy="120" r="100" stroke-width="1" stroke-dasharray="2 6" opacity="0.4"/>
+      <circle cx="120" cy="120" r="85" stroke-width="0.5" opacity="0.3"/>
+      <circle cx="120" cy="120" r="45" stroke-width="1.5"/>
+      <path d="M 120 40 L 120 20 M 120 200 L 120 220 M 40 120 L 20 120 M 200 120 L 220 120" stroke-width="1.5"/>
+      <path d="M 63 63 L 48 48 M 177 177 L 192 192 M 63 177 L 48 192 M 177 63 L 192 48" stroke-width="1.5"/>
+      <path d="M 90 55 L 80 40 M 150 55 L 160 40 M 90 185 L 80 200 M 150 185 L 160 200" stroke-width="1"/>
+      <path d="M 55 90 L 40 80 M 55 150 L 40 160 M 185 90 L 200 80 M 185 150 L 200 160" stroke-width="1"/>
+      <path d="M 120 60 A 60 60 0 1 1 60 120 A 45 45 0 1 0 120 60 Z" fill="currentColor" opacity="0.15"/>
+      <path d="M 120 60 A 60 60 0 1 1 60 120 A 45 45 0 1 0 120 60 Z" stroke-width="1.5"/>
+      <path d="M 120 95 L 135 120 L 120 145 L 105 120 Z" stroke-width="1.5"/>
+      <circle cx="120" cy="120" r="4" fill="currentColor"/>
+      <circle cx="180" cy="80" r="2" fill="currentColor"/>
+      <circle cx="200" cy="95" r="1.5" fill="currentColor"/>
+      <circle cx="190" cy="65" r="1.5" fill="currentColor"/>
+      <path d="M 180 80 L 190 65 M 180 80 L 200 95" stroke-width="0.75" opacity="0.5"/>
+    </svg>
+  )}
+
+  {variant === "cosmic-clock" && (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="h-full w-full">
+      <circle cx="120" cy="120" r="105" stroke-width="1" stroke-dasharray="4 8" opacity="0.6"/>
+      <ellipse cx="120" cy="120" rx="100" ry="35" stroke-width="1" transform="rotate(30 120 120)" opacity="0.4"/>
+      <ellipse cx="120" cy="120" rx="100" ry="35" stroke-width="1" transform="rotate(-30 120 120)" opacity="0.4"/>
+      <path d="M 70 45 L 170 45 L 120 120 L 170 195 L 70 195 Z" stroke-width="1.5"/>
+      <line x1="50" y1="45" x2="190" y2="45" stroke-width="2"/>
+      <line x1="50" y1="195" x2="190" y2="195" stroke-width="2"/>
+      <line x1="70" y1="45" x2="70" y2="195" stroke-width="1" opacity="0.5"/>
+      <line x1="170" y1="45" x2="170" y2="195" stroke-width="1" opacity="0.5"/>
+      <path d="M 120 65 L 140 95 L 120 115 L 100 95 Z" stroke-width="1.5"/>
+      <path d="M 120 125 L 140 145 L 120 175 L 100 145 Z" stroke-width="1" stroke-dasharray="2 3"/>
+      <line x1="120" y1="115" x2="120" y2="175" stroke-width="1.5" stroke-dasharray="1 4"/>
+      <path d="M 90 195 L 105 175 L 135 175 L 150 195 Z" fill="currentColor" opacity="0.2"/>
+      <circle cx="120" cy="170" r="3" fill="currentColor"/>
+      <circle cx="110" cy="185" r="2" fill="currentColor"/>
+      <circle cx="130" cy="180" r="1.5" fill="currentColor"/>
+    </svg>
+  )}
+
+  {variant === "lotus" && (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="h-full w-full">
+      <circle cx="120" cy="140" r="85" stroke-width="1" stroke-dasharray="2 8" opacity="0.5"/>
+      <circle cx="120" cy="140" r="65" stroke-width="0.5" opacity="0.3"/>
+      <path d="M 50 170 L 190 170" stroke-width="1" opacity="0.5"/>
+      <path d="M 70 170 A 50 50 0 0 0 170 170" stroke-width="2"/>
+      <path d="M 90 170 A 30 30 0 0 0 150 170" stroke-width="1" opacity="0.5"/>
+      <path d="M 120 170 Q 180 170 200 100 Q 120 40 120 10 Q 120 40 40 100 Q 60 170 120 170 Z" stroke-width="1.5"/>
+      <path d="M 120 170 Q 155 170 160 110 Q 120 60 120 30 Q 120 60 80 110 Q 85 170 120 170 Z" stroke-width="1.5" opacity="0.8"/>
+      <path d="M 120 170 Q 135 170 140 130 Q 120 90 120 70 Q 120 90 100 130 Q 105 170 120 170 Z" stroke-width="1" opacity="0.6"/>
+      <path d="M 120 95 L 135 125 L 120 155 L 105 125 Z" fill="currentColor" opacity="0.1"/>
+      <path d="M 120 95 L 135 125 L 120 155 L 105 125 Z" stroke-width="1.5"/>
+      <circle cx="120" cy="125" r="4" fill="currentColor"/>
+      <circle cx="120" cy="-5" r="2" fill="currentColor"/>
+      <line x1="120" y1="5" x2="120" y2="15" stroke-width="1" stroke-dasharray="2 2"/>
+    </svg>
+  )}
+
+  {variant === "key" && (
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" class="h-full w-full">
+      <circle cx="120" cy="65" r="55" stroke-width="1" stroke-dasharray="2 6" opacity="0.5"/>
+      <circle cx="120" cy="65" r="45" stroke-width="0.5" opacity="0.3"/>
+      <line x1="120" y1="0" x2="120" y2="10" stroke-width="1.5"/>
+      <line x1="60" y1="35" x2="70" y2="40" stroke-width="1.5"/>
+      <line x1="180" y1="35" x2="170" y2="40" stroke-width="1.5"/>
+      <path d="M 120 20 L 165 65 L 120 110 L 75 65 Z" stroke-width="1.5"/>
+      <path d="M 120 35 L 150 65 L 120 95 L 90 65 Z" stroke-width="1" opacity="0.5"/>
+      <path d="M 95 65 Q 120 45 145 65 Q 120 85 95 65 Z" stroke-width="1.5"/>
+      <circle cx="120" cy="65" r="6" fill="currentColor"/>
+      <line x1="120" y1="110" x2="120" y2="220" stroke-width="2"/>
+      <line x1="115" y1="125" x2="125" y2="125" stroke-width="1" opacity="0.5"/>
+      <line x1="115" y1="140" x2="125" y2="140" stroke-width="1" opacity="0.5"/>
+      <path d="M 120 195 L 155 195 L 155 175 L 140 175 L 140 160 L 120 160" stroke-width="2"/>
+      <circle cx="140" cy="185" r="3" fill="currentColor"/>
+      <path d="M 120 220 L 125 230 L 115 230 Z" fill="currentColor"/>
+      <circle cx="105" cy="215" r="1.5" fill="currentColor"/>
+      <circle cx="135" cy="205" r="1.5" fill="currentColor"/>
+    </svg>
+  )}
+</div>
