@@ -8,12 +8,31 @@ import { siteConfig } from "../content/site";
 interface Props {
   title?: string;
   description?: string;
+  schema?: Record<string, unknown>;
 }
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 const {
   title = siteConfig.name,
   description = siteConfig.description,
+  schema,
 } = Astro.props;
+
+const defaultSchema = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: siteConfig.name,
+  description: siteConfig.description,
+  url: "https://divinidad000.com",
+  telephone: `+${siteConfig.contact.phone}`,
+  email: siteConfig.contact.email,
+  priceRange: "20€ – 60€",
+  areaServed: { "@type": "Country", name: "España" },
+  serviceType: "Consulta de tarot por teléfono",
+};
+
+const jsonLd = schema ?? defaultSchema;
 ---
 
 <!doctype html>
@@ -24,20 +43,26 @@ const {
     <meta name="description" content={description} />
     <meta name="theme-color" content="#0B0B0F" />
 
+    <link rel="canonical" href={canonicalURL} />
+
     <!-- Open Graph -->
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:site_name" content={siteConfig.name} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:locale" content="es_ES" />
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <script is:inline>
       (function(){
-        function l(){var l=document.createElement("link");l.rel="stylesheet";l.href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Questrial&display=swap";document.head.appendChild(l);}
+        function l(){var e=document.createElement("link");e.rel="stylesheet";e.href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Questrial&display=swap";document.head.appendChild(e);}
         if(document.readyState==="complete")l();else window.addEventListener("load",l);
       })();
     </script>

@@ -29,9 +29,23 @@ const faqs = [
     a: "Por supuesto. Puedes modificar o cancelar tu cita desde el propio enlace de confirmación o escribiéndonos por WhatsApp con al menos 24 horas de antelación.",
   },
 ];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.q,
+    acceptedAnswer: { "@type": "Answer", text: f.a },
+  })),
+};
 ---
 
-<BaseLayout title="Reservar — Tarot Divinidad 000">
+<BaseLayout
+  title="Reservar consulta de tarot — Tarot Divinidad 000"
+  description="Reserva tu sesión de tarot telefónico. Elige entre tiradas de 20, 30, 45 o 60 minutos. Precios desde 20€. Pago seguro y confirmación inmediata."
+  schema={faqSchema}
+>
   <Header />
   <main class="relative min-h-screen overflow-hidden bg-brand-bg pt-36 pb-20 sm:pt-40 md:pt-44 md:pb-28 lg:pt-48 2xl:pt-52 3xl:pt-60 3xl:pb-36">
     <DecoArt
