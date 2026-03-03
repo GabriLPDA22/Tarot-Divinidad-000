@@ -44,11 +44,42 @@ const {
     <title>{title}</title>
   </head>
   <body class="min-h-screen bg-brand-bg text-brand-text font-body">
-    <LoaderOverlay duration={4000} />
+    <LoaderOverlay />
     <FrameBorder />
     <div class="relative z-[1]">
       <slot />
     </div>
     <CookieBanner />
+    <script is:inline>
+      (function () {
+        if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+        var elements = document.querySelectorAll("[data-parallax-el]");
+        if (!elements.length) return;
+
+        var ticking = false;
+        function updateParallax() {
+          var viewportH = window.innerHeight || document.documentElement.clientHeight;
+          for (var i = 0; i < elements.length; i++) {
+            var speed = parseFloat(elements[i].getAttribute("data-parallax-el") || "0.05");
+            var rect = elements[i].getBoundingClientRect();
+            var distanceFromCenter = rect.top + rect.height / 2 - viewportH / 2;
+            var offset = -distanceFromCenter * speed;
+            elements[i].style.setProperty("--parallax-offset", offset + "px");
+          }
+          ticking = false;
+        }
+
+        function requestUpdate() {
+          if (ticking) return;
+          ticking = true;
+          requestAnimationFrame(updateParallax);
+        }
+
+        window.addEventListener("scroll", requestUpdate, { passive: true });
+        window.addEventListener("resize", requestUpdate, { passive: true });
+
+        updateParallax();
+      })();
+    </script>
   </body>
 </html>

@@ -11,14 +11,14 @@ const whatsappUrl = buildWhatsAppUrl(whatsapp.phone, whatsapp.message);
   class="relative flex min-h-[92vh] items-center justify-center overflow-hidden bg-brand-bg md:min-h-[95vh]"
   id="hero"
 >
-  <!-- Decorative crystal ball (left) -->
+  <!-- Decorative crystal ball (left) — parallax: plano cósmico, se mueve más lento -->
   <DecoArt
     variant="crystal-ball"
     class="left-[-2rem] top-[5%] z-[1] h-[420px] w-[320px] md:left-[1%] md:top-[8%] md:h-[550px] md:w-[420px] 3xl:h-[750px] 3xl:w-[560px]"
     opacity={0.18}
   />
 
-  <!-- Decorative tarot cards (right) -->
+  <!-- Decorative tarot cards (right) — parallax: profundidad, capas de significado -->
   <DecoArt
     variant="cards"
     class="right-[-1rem] bottom-[2%] z-[1] h-[450px] w-[340px] md:right-[2%] md:bottom-[5%] md:h-[600px] md:w-[450px] 3xl:h-[800px] 3xl:w-[600px]"
@@ -26,7 +26,7 @@ const whatsappUrl = buildWhatsAppUrl(whatsapp.phone, whatsapp.message);
   />
 
   <!-- Content -->
-  <div class="relative z-10 mx-auto max-w-6xl px-6 py-24 text-center md:px-8 2xl:max-w-7xl 3xl:max-w-[90rem] 3xl:px-12">
+  <div class="relative z-10 mx-auto max-w-6xl px-6 py-24 text-center md:px-8 2xl:max-w-7xl 3xl:max-w-[90rem] 3xl:px-12" data-parallax-el="0.08">
     <!-- Microline -->
     <p class="mb-5 font-heading text-[11px] font-medium uppercase tracking-[0.3em] text-brand-gold/80 md:mb-6 md:text-xs 3xl:mb-8 3xl:text-sm">
       {hero.microline}

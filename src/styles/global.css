@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 :root {
   --color-bg: #0B0B0F;
@@ -43,29 +43,68 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2
-           px-8 py-3.5 rounded-sm
-           bg-brand-gold text-brand-bg
-           font-heading font-semibold text-sm tracking-widest uppercase
-           transition-all duration-300 ease-out
-           hover:bg-brand-gold-light hover:shadow-lg hover:shadow-brand-gold/20
-           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-gold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    border-radius: 0.125rem;
+    background-color: var(--color-gold);
+    color: var(--color-bg);
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.3s ease-out;
+  }
+  .btn-primary:hover {
+    background-color: var(--color-gold-light);
+    box-shadow: 0 10px 15px -3px rgba(184, 162, 106, 0.2);
+  }
+  .btn-primary:focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
   }
 
   .btn-secondary {
-    @apply inline-flex items-center justify-center gap-2
-           px-8 py-3.5 rounded-sm
-           border border-brand-text/30 text-brand-text
-           font-heading font-semibold text-sm tracking-widest uppercase
-           transition-all duration-300 ease-out
-           hover:bg-brand-text/10 hover:border-brand-text/50
-           focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-text;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.875rem 2rem;
+    border: 1px solid rgba(242, 240, 234, 0.3);
+    border-radius: 0.125rem;
+    color: var(--color-text);
+    font-family: var(--font-heading);
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    transition: all 0.3s ease-out;
+  }
+  .btn-secondary:hover {
+    background-color: rgba(242, 240, 234, 0.1);
+    border-color: rgba(242, 240, 234, 0.5);
+  }
+  .btn-secondary:focus-visible {
+    outline: 2px solid var(--color-text);
+    outline-offset: 2px;
   }
 }
 
 .hero-deco {
   opacity: calc(var(--deco-opacity, 0.08) * 0.35);
   transition: opacity 0.3s ease;
+}
+
+[data-parallax-el] {
+  will-change: transform;
+  backface-visibility: hidden;
+}
+
+[data-parallax-el] {
+  transform: translate3d(0, var(--parallax-offset, 0px), 0);
 }
 
 @media (min-width: 768px) {

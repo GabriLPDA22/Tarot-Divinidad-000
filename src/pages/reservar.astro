@@ -45,7 +45,7 @@ const faqs = [
       opacity={0.07}
     />
 
-    <div class="relative z-10 mx-auto max-w-6xl px-6 md:px-8 3xl:max-w-7xl 3xl:px-12">
+    <div class="relative z-10 mx-auto max-w-6xl px-6 md:px-8 3xl:max-w-7xl 3xl:px-12" data-parallax-el="0.05">
       <!-- Title -->
       <h1 class="text-center font-heading text-sm font-semibold uppercase tracking-[0.25em] text-brand-gold md:text-base 3xl:text-lg">
         Reserva tu consulta
@@ -65,7 +65,7 @@ const faqs = [
       </p>
 
       <!-- Tarot cards grid -->
-      <div class="mt-14 grid grid-cols-2 gap-4 lg:grid-cols-4 md:mt-16 md:gap-6 3xl:mt-20 3xl:gap-8">
+      <div class="mt-14 grid grid-cols-2 gap-4 lg:grid-cols-4 md:mt-16 md:gap-6 3xl:mt-20 3xl:gap-8" data-parallax-el="0.03">
         {tiers.map((tier) => {
           const bookingUrl = reservaLinks[tier.linkKey];
           const waUrl = getWhatsAppUrl(tier.duration, tier.price);

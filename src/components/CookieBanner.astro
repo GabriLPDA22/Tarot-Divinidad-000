@@ -62,10 +62,23 @@
     var banner = document.getElementById("cookie-banner");
     if (!banner) return;
 
-    setTimeout(function () {
+    var shown = false;
+    function showBanner() {
+      if (shown) return;
+      shown = true;
       banner.style.transform = "translateY(0)";
       banner.style.opacity = "1";
-    }, 1500);
+    }
+
+    // Si el loader está activo, esperamos su evento de finalización.
+    // Si no, mostramos el banner inmediatamente.
+    if (document.querySelector(".loader-overlay")) {
+      document.addEventListener("loader:done", showBanner, { once: true });
+      // Fallback por si el evento no llegara por cualquier motivo
+      setTimeout(showBanner, 2600);
+    } else {
+      requestAnimationFrame(showBanner);
+    }
 
     function hide() {
       banner.style.transform = "translateY(100%)";

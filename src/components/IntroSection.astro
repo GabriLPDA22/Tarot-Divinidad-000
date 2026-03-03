@@ -21,14 +21,14 @@ const cards = [
 ---
 
 <section class="relative overflow-hidden bg-brand-bg py-20 md:py-28 3xl:py-36" id="enfoque">
-  <!-- Decorative SVG (LEFT — alternando con hero que es derecha) -->
+  <!-- Decorative SVG (LEFT) — sol/luna: dualidad, parallax suave -->
   <DecoArt
     variant="sun-moon"
     class="left-[-3rem] top-1/2 z-[1] -translate-y-1/2 h-[300px] w-[300px] md:left-[-1rem] md:h-[400px] md:w-[400px] 3xl:h-[550px] 3xl:w-[550px]"
     opacity={0.10}
   />
 
-  <div class="relative z-10 mx-auto max-w-6xl px-6 md:px-8 2xl:max-w-7xl 3xl:max-w-[90rem] 3xl:px-12">
+  <div class="relative z-10 mx-auto max-w-6xl px-6 md:px-8 2xl:max-w-7xl 3xl:max-w-[90rem] 3xl:px-12" data-parallax-el="0.06">
     <!-- Section title -->
     <h2 class="text-center font-heading text-sm font-semibold uppercase tracking-[0.25em] text-brand-gold md:text-base 3xl:text-lg">
       Acompañamiento consciente
@@ -51,7 +51,7 @@ const cards = [
     </p>
 
     <!-- Cards grid -->
-    <div class="mt-14 grid gap-6 lg:grid-cols-3 md:mt-16 md:gap-8 3xl:mt-20">
+    <div class="mt-14 grid gap-6 lg:grid-cols-3 md:mt-16 md:gap-8 3xl:mt-20" data-parallax-el="0.04">
       {cards.map((card) => (
         <article class="tarot-card group relative overflow-hidden rounded-lg border border-brand-gold/15 bg-[#0a0a11] p-7 transition-all duration-400 hover:border-brand-gold/35 hover:shadow-[0_0_30px_-8px_rgba(184,162,106,0.15)] md:p-8 3xl:p-10">
           <!-- Double border effect -->

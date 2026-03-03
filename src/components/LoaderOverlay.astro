@@ -2,7 +2,8 @@
 interface Props {
   duration?: number;
 }
-const { duration = 4000 } = Astro.props;
+// 2.8s para dar tiempo a apreciar el símbolo antes del salto
+const { duration = 2800 } = Astro.props;
 ---
 
 <noscript>
@@ -12,83 +13,43 @@ const { duration = 4000 } = Astro.props;
 </noscript>
 
 <div
-  class="loader-overlay fixed inset-0 z-[9999] flex items-center justify-center bg-brand-bg transition-opacity duration-700"
+  class="loader-overlay fixed inset-0 z-[9999] bg-transparent"
   aria-hidden="true"
 >
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 400 400"
-    class="h-[200px] w-[200px] sm:h-[240px] sm:w-[240px] md:h-[280px] md:w-[280px] 2xl:h-[340px] 2xl:w-[340px] 3xl:h-[400px] 3xl:w-[400px]"
-  >
-    <defs>
-      <style>
-        .ldr-gold { stroke: #B8A26A; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-        .ldr-gold-fill { fill: #B8A26A; }
-        .ldr-bg { fill: #0B0B0F; }
-        .ldr-spin { animation: ldr-spin-anim 20s linear infinite; transform-origin: 200px 200px; }
-        .ldr-cycle { opacity: 0; animation: ldr-fadeCycle 9s infinite ease-in-out; transform-origin: 0px 0px; }
-        .ldr-delay-1 { animation-delay: 0s; }
-        .ldr-delay-2 { animation-delay: 3s; }
-        .ldr-delay-3 { animation-delay: 6s; }
-        @keyframes ldr-spin-anim { 100% { transform: rotate(360deg); } }
-        @keyframes ldr-fadeCycle {
-          0% { opacity: 0; transform: scale(0.9) translateY(15px); }
-          5% { opacity: 1; transform: scale(1) translateY(0); filter: drop-shadow(0 0 6px rgba(184,162,106,0.4)); }
-          28% { opacity: 1; transform: scale(1) translateY(0); filter: drop-shadow(0 0 6px rgba(184,162,106,0.4)); }
-          33.33% { opacity: 0; transform: scale(1.05) translateY(-15px); }
-          100% { opacity: 0; transform: scale(1.05) translateY(-15px); }
-        }
-      </style>
-      <g id="ldr-card-template">
-        <rect x="-25" y="-40" width="50" height="80" rx="3" class="ldr-gold ldr-bg"/>
-        <rect x="-18" y="-33" width="36" height="66" rx="1.5" class="ldr-gold" stroke-width="0.8"/>
-        <circle cx="0" cy="0" r="8" class="ldr-gold" stroke-width="0.8"/>
-        <circle cx="0" cy="0" r="2" class="ldr-gold-fill"/>
+  <div class="absolute inset-0 flex items-center justify-center overflow-hidden">
+    
+    <svg viewBox="0 0 100 100" class="portal-svg absolute w-[180px] h-[180px] md:w-[250px] md:h-[250px] overflow-visible">
+      
+      <path d="M -5000 -5000 L 5100 -5000 L 5100 5100 L -5000 5100 Z 
+               M 10 50 C 30 20 70 20 90 50 C 70 80 30 80 10 50 Z
+               M 50 50 m -7 0 a 7 7 0 1 0 14 0 a 7 7 0 1 0 -14 0" 
+            fill="#06060a" fill-rule="evenodd" />
+
+      <g fill="none" stroke="#B8A26A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M 10 50 C 30 20 70 20 90 50 C 70 80 30 80 10 50 Z" />
+        <circle cx="50" cy="50" r="10" opacity="0.5" stroke-dasharray="2 4" />
+        <circle cx="50" cy="50" r="7" />
       </g>
-    </defs>
+            
+    </svg>
+    
+  </div>
 
-    <!-- Spinning ring -->
-    <g class="ldr-spin">
-      <circle cx="200" cy="200" r="105" class="ldr-gold" stroke-dasharray="2 15" stroke-width="2.5" opacity="0.8"/>
-      <circle cx="200" cy="200" r="115" class="ldr-gold" stroke-dasharray="8 25" stroke-width="1" opacity="0.5"/>
-      <circle cx="95" cy="200" r="3" class="ldr-gold-fill"/>
-      <circle cx="305" cy="200" r="4" class="ldr-gold-fill"/>
-      <circle cx="200" cy="85" r="2" class="ldr-gold-fill"/>
-    </g>
+  <style>
+    .portal-svg {
+      transform-origin: center center;
+      will-change: transform, opacity;
+      /* Animación: pausa contemplativa -> zoom portal */
+      animation: zoomEye 1.6s cubic-bezier(0.8, 0, 0.2, 1) forwards;
+      animation-delay: 0.8s;
+    }
 
-    <!-- Padre fijo en el centro: la animación CSS no toca este transform -->
-    <g transform="translate(200, 200)">
-
-      <g class="ldr-cycle ldr-delay-1">
-        <use href="#ldr-card-template" transform="translate(-35, 10) rotate(-25)"/>
-        <use href="#ldr-card-template" transform="translate(35, 10) rotate(25)"/>
-        <use href="#ldr-card-template" transform="translate(0, -10) rotate(0)"/>
-      </g>
-
-      <g class="ldr-cycle ldr-delay-2">
-        <path d="M -22 45 L 22 45 L 35 60 L -35 60 Z" class="ldr-gold ldr-bg" stroke-linejoin="miter"/>
-        <path d="M -28 60 L 28 60 L 32 66 L -32 66 Z" class="ldr-gold ldr-bg"/>
-        <circle cx="0" cy="52" r="2.5" class="ldr-gold-fill"/>
-        <circle cx="0" cy="0" r="48" class="ldr-gold ldr-bg"/>
-        <circle cx="0" cy="0" r="40" class="ldr-gold" stroke-dasharray="4 6" stroke-width="0.8" opacity="0.5"/>
-        <path d="M 0 -18 L 4 -5 L 18 0 L 4 5 L 0 18 L -4 5 L -18 0 L -4 -5 Z" class="ldr-gold-fill"/>
-        <path d="M -30 -25 A 40 40 0 0 1 15 -40" class="ldr-gold" stroke-width="1.5" stroke-linecap="round"/>
-      </g>
-
-      <g class="ldr-cycle ldr-delay-3">
-        <path d="M 0 -65 L 55 0 L 0 65 L -55 0 Z" class="ldr-gold ldr-bg"/>
-        <path d="M 0 -50 L 40 0 L 0 50 L -40 0 Z" class="ldr-gold" stroke-width="1"/>
-        <path d="M -28 0 Q 0 -22 28 0 Q 0 22 -28 0 Z" class="ldr-gold ldr-bg"/>
-        <circle cx="0" cy="0" r="10" class="ldr-gold"/>
-        <path d="M -3 -5 A 7 7 0 1 0 5 5 A 6 6 0 1 1 -3 -5 Z" class="ldr-gold-fill"/>
-        <line x1="0" y1="-32" x2="0" y2="-45" class="ldr-gold" stroke-width="1.2"/>
-        <line x1="0" y1="32" x2="0" y2="45" class="ldr-gold" stroke-width="1.2"/>
-        <line x1="-32" y1="0" x2="-45" y2="0" class="ldr-gold" stroke-width="1.2"/>
-        <line x1="32" y1="0" x2="45" y2="0" class="ldr-gold" stroke-width="1.2"/>
-      </g>
-
-    </g>
-  </svg>
+    @keyframes zoomEye {
+      0% { transform: scale(1); opacity: 1; }
+      20% { transform: scale(1.05); } /* Pequeño latido antes de entrar */
+      100% { transform: scale(160); opacity: 0; }
+    }
+  </style>
 </div>
 
 <script is:inline define:vars={{ duration }}>
@@ -103,9 +64,20 @@ const { duration = 4000 } = Astro.props;
     }
 
     sessionStorage.setItem("loader-seen", "1");
+    
+    var previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    var safeDuration = Math.max(duration - 400, 0);
     setTimeout(function () {
-      el.style.opacity = "0";
-      setTimeout(function () { el.remove(); }, 700);
+      el.style.pointerEvents = "none";
+      document.body.style.overflow = previousOverflow;
+      void document.body.offsetHeight;
+    }, safeDuration);
+
+    setTimeout(function () {
+      document.dispatchEvent(new Event("loader:done"));
+      el.remove();
     }, duration);
   })();
 </script>

@@ -111,6 +111,7 @@ import Logo from "./Logo.astro";
   const mobileNav = document.getElementById("mobile-nav")!;
   const header = document.getElementById("main-header")!;
   const navLinks = mobileNav.querySelectorAll("a");
+  const homeLinks = document.querySelectorAll<HTMLAnchorElement>('a[href="/"]');
 
   let isOpen = false;
 
@@ -134,8 +135,16 @@ import Logo from "./Logo.astro";
     document.body.style.overflow = "";
   }
 
+  function handleHomeClick(e: Event) {
+    if (window.location.pathname !== "/") return;
+    e.preventDefault();
+    closeMenu();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
+
   toggle.addEventListener("click", () => (isOpen ? closeMenu() : openMenu()));
   navLinks.forEach((l) => l.addEventListener("click", closeMenu));
+  homeLinks.forEach((l) => l.addEventListener("click", handleHomeClick));
 
   window.addEventListener("scroll", () => {
     header.classList.toggle("scrolled", window.scrollY > 40);

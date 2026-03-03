@@ -14,6 +14,7 @@ const { variant, class: className = "", opacity = 0.08 } = Astro.props;
   style={`--deco-opacity: ${opacity}; color: #B8A26A;`}
   aria-hidden="true"
 >
+  <div class="h-full w-full">
   {variant === "cards" && (
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 800" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" class="h-full w-full">
       <defs>
@@ -189,4 +190,5 @@ const { variant, class: className = "", opacity = 0.08 } = Astro.props;
       <circle cx="135" cy="205" r="1.5" fill="currentColor"/>
     </svg>
   )}
+  </div>
 </div>
