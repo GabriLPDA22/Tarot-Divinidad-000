@@ -13,40 +13,44 @@ const { duration = 2800 } = Astro.props;
 </noscript>
 
 <div
-  class="loader-overlay fixed inset-0 z-[9999] bg-transparent"
+  class="loader-overlay fixed inset-0 z-[9999] overflow-hidden bg-transparent"
   aria-hidden="true"
 >
-  <div class="absolute inset-0 flex items-center justify-center overflow-hidden">
+  <svg viewBox="0 0 100 100" class="portal-svg absolute inset-0 m-auto w-[140px] h-[140px] md:w-[250px] md:h-[250px] overflow-visible">
     
-    <svg viewBox="0 0 100 100" class="portal-svg absolute w-[180px] h-[180px] md:w-[250px] md:h-[250px] overflow-visible">
-      
-      <path d="M -5000 -5000 L 5100 -5000 L 5100 5100 L -5000 5100 Z 
-               M 10 50 C 30 20 70 20 90 50 C 70 80 30 80 10 50 Z
-               M 50 50 m -7 0 a 7 7 0 1 0 14 0 a 7 7 0 1 0 -14 0" 
-            fill="#06060a" fill-rule="evenodd" />
+    <path d="M -5000 -5000 L 5100 -5000 L 5100 5100 L -5000 5100 Z 
+             M 10 50 C 30 20 70 20 90 50 C 70 80 30 80 10 50 Z
+             M 50 50 m -7 0 a 7 7 0 1 0 14 0 a 7 7 0 1 0 -14 0" 
+          fill="#06060a" fill-rule="evenodd" />
 
-      <g fill="none" stroke="#B8A26A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M 10 50 C 30 20 70 20 90 50 C 70 80 30 80 10 50 Z" />
-        <circle cx="50" cy="50" r="10" opacity="0.5" stroke-dasharray="2 4" />
-        <circle cx="50" cy="50" r="7" />
-      </g>
-            
-    </svg>
-    
-  </div>
+    <g fill="none" stroke="#B8A26A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M 10 50 C 30 20 70 20 90 50 C 70 80 30 80 10 50 Z" />
+      <circle cx="50" cy="50" r="10" opacity="0.5" stroke-dasharray="2 4" />
+      <circle cx="50" cy="50" r="7" />
+    </g>
+          
+  </svg>
 
   <style>
+    .loader-overlay {
+      opacity: 0;
+      animation: loaderFadeIn 0.2s ease-out forwards;
+    }
+
     .portal-svg {
       transform-origin: center center;
       will-change: transform, opacity;
-      /* Animación: pausa contemplativa -> zoom portal */
       animation: zoomEye 1.6s cubic-bezier(0.8, 0, 0.2, 1) forwards;
       animation-delay: 0.8s;
     }
 
+    @keyframes loaderFadeIn {
+      to { opacity: 1; }
+    }
+
     @keyframes zoomEye {
       0% { transform: scale(1); opacity: 1; }
-      20% { transform: scale(1.05); } /* Pequeño latido antes de entrar */
+      20% { transform: scale(1.05); }
       100% { transform: scale(160); opacity: 0; }
     }
   </style>
@@ -63,21 +67,28 @@ const { duration = 2800 } = Astro.props;
       return;
     }
 
-    sessionStorage.setItem("loader-seen", "1");
-    
-    var previousOverflow = document.body.style.overflow;
-    document.body.style.overflow = "hidden";
+    var isMobile = window.matchMedia("(max-width: 768px)").matches;
+    var actualDuration = isMobile ? 2000 : duration;
+    var animDelay = isMobile ? "0.5s" : "0.8s";
+    var animDuration = isMobile ? "1.2s" : "1.6s";
+    var svg = el.querySelector(".portal-svg");
+    if (svg) {
+      svg.style.animationDelay = animDelay;
+      svg.style.animationDuration = animDuration;
+    }
 
-    var safeDuration = Math.max(duration - 400, 0);
+    sessionStorage.setItem("loader-seen", "1");
+    document.body.classList.add("loader-active");
+
+    var safeDuration = Math.max(actualDuration - 800, 0);
     setTimeout(function () {
       el.style.pointerEvents = "none";
-      document.body.style.overflow = previousOverflow;
-      void document.body.offsetHeight;
+      document.body.classList.remove("loader-active");
     }, safeDuration);
 
     setTimeout(function () {
       document.dispatchEvent(new Event("loader:done"));
       el.remove();
-    }, duration);
+    }, actualDuration);
   })();
 </script>

@@ -8,8 +8,8 @@
   --color-gold: #B8A26A;
   --color-gold-light: #D4C28A;
   --color-gold-dark: #8A7A4E;
-  --font-heading: "Montserrat", sans-serif;
-  --font-body: "Questrial", sans-serif;
+  --font-heading: "Montserrat", system-ui, sans-serif;
+  --font-body: "Questrial", system-ui, sans-serif;
 }
 
 @layer base {
@@ -33,6 +33,10 @@
     font-family: var(--font-body);
     line-height: 1.6;
     overflow-x: hidden;
+  }
+
+  body.loader-active {
+    overflow: hidden !important;
   }
 
   ::selection {
