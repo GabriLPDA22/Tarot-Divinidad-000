@@ -60,15 +60,10 @@ const jsonLd = schema ?? defaultSchema;
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <script is:inline>
-      (function(){
-        function l(){var e=document.createElement("link");e.rel="stylesheet";e.href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Questrial&display=swap";document.head.appendChild(e);}
-        if(document.readyState==="complete")l();else window.addEventListener("load",l);
-      })();
-    </script>
-    <noscript>
-      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Questrial&display=swap" />
-    </noscript>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Questrial&display=swap"
+      rel="stylesheet"
+    />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <title>{title}</title>
