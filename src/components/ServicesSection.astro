@@ -20,8 +20,8 @@ function getWhatsAppUrl(duration: number, price: number) {
     opacity={0.10}
   />
 
-  <div class="relative z-10 mx-auto max-w-6xl px-6 md:px-8 2xl:max-w-7xl 3xl:max-w-[90rem] 3xl:px-12" data-parallax-el="0.06">
-    <h2 class="text-center font-heading text-sm font-semibold uppercase tracking-[0.25em] text-brand-gold md:text-base 3xl:text-lg">
+  <div class="relative z-10 mx-auto max-w-6xl px-6 md:px-8 2xl:max-w-7xl 3xl:max-w-[90rem] 3xl:px-12">
+    <h2 class="services-header text-center font-heading text-sm font-semibold uppercase tracking-[0.25em] text-brand-gold md:text-base 3xl:text-lg">
       Tiradas disponibles
     </h2>
 
@@ -34,17 +34,17 @@ function getWhatsAppUrl(duration: number, price: number) {
       <span class="h-px w-12 bg-gradient-to-l from-transparent to-brand-gold/30"></span>
     </div>
 
-    <p class="mx-auto mt-6 max-w-xl text-center text-base leading-relaxed text-brand-text/85 md:mt-8 md:text-lg 3xl:mt-10 3xl:text-xl">
+    <p class="services-header mx-auto mt-6 max-w-xl text-center text-base leading-relaxed text-brand-text/85 md:mt-8 md:text-lg 3xl:mt-10 3xl:text-xl">
       Elige el tiempo que necesitas para tu proceso.
     </p>
 
-    <div class="mt-14 grid grid-cols-2 gap-4 lg:grid-cols-4 md:mt-16 md:gap-6 3xl:mt-20 3xl:gap-8" data-parallax-el="0.04">
-      {tiers.map((tier) => {
+    <div class="mt-14 grid grid-cols-2 gap-4 lg:grid-cols-4 md:mt-16 md:gap-6 3xl:mt-20 3xl:gap-8">
+      {tiers.map((tier, i) => {
         const bookingUrl = reservaLinks[tier.linkKey];
         const waUrl = getWhatsAppUrl(tier.duration, tier.price);
 
         return (
-          <article class="tarot-price-card group relative transition-all duration-500 hover:-translate-y-2">
+          <article class={`tier-card tier-card--${i + 1} group relative transition-[transform,box-shadow] duration-500 hover:-translate-y-2`}>
             <div class="relative" style="aspect-ratio: 320 / 520;">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -164,3 +164,54 @@ function getWhatsAppUrl(duration: number, price: number) {
     </div>
   </div>
 </section>
+
+<style>
+  /* Header */
+  .services-header {
+    opacity: 0;
+    transform: scale(0.97) translateY(14px);
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .services-header.is-visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  /* Cartas: salen desde abajo como si las repartieran */
+  .tier-card {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+      opacity 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+      transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .tier-card.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .tier-card--1 { transition-delay: 0ms;   }
+  .tier-card--2 { transition-delay: 90ms;  }
+  .tier-card--3 { transition-delay: 180ms; }
+  .tier-card--4 { transition-delay: 270ms; }
+</style>
+
+<script>
+  function initServices() {
+    const targets = document.querySelectorAll<HTMLElement>(".services-header, .tier-card");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08 }
+    );
+    targets.forEach((el) => observer.observe(el));
+  }
+
+  document.addEventListener("astro:page-load", initServices);
+  document.addEventListener("DOMContentLoaded", initServices);
+</script>

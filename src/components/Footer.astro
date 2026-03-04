@@ -1,238 +1,262 @@
 ---
 import { siteConfig } from "../content/site";
+import Logo from "./Logo.astro";
 
 const rawPhone = siteConfig.contact.phone;
 const formattedPhone =
   rawPhone.length === 11
     ? `+${rawPhone.slice(0, 2)} ${rawPhone.slice(2, 5)} ${rawPhone.slice(5, 8)} ${rawPhone.slice(8)}`
     : `+${rawPhone}`;
+
+const navLinks = [
+  { label: "Inicio", href: "/" },
+  { label: "Tiradas & precios", href: "/#servicios" },
+  { label: "Reservar", href: "/reservar" },
+  { label: "Sobre nosotros", href: "/sobre" },
+  { label: "Contacto", href: "/#contacto" },
+];
+
+const legalLinks = [
+  { label: "Política de privacidad", href: "/privacidad" },
+  { label: "Aviso legal", href: "/aviso-legal" },
+  { label: "Política de cookies", href: "/cookies" },
+];
 ---
 
 <footer class="relative overflow-hidden bg-[#050508]">
   <!-- Ambient glow -->
   <div
-    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_60%_at_50%_0%,rgba(184,162,106,0.07)_0%,transparent_70%)]"
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_20%_0%,rgba(184,162,106,0.06)_0%,transparent_65%)]"
     aria-hidden="true"
-  >
-  </div>
+  ></div>
 
-  <!-- Top ornamental border — full width, dentro del flujo correcto -->
+  <!-- Top ornamental border -->
   <div class="relative z-10 flex items-center px-8 sm:px-12" aria-hidden="true">
-    <div
-      class="h-px flex-1 bg-gradient-to-r from-transparent via-brand-gold/30 to-brand-gold/50"
-    >
-    </div>
+    <div class="h-px flex-1 bg-gradient-to-r from-transparent via-brand-gold/30 to-brand-gold/50"></div>
     <div class="mx-4 flex items-center justify-center">
-      <svg
-        class="h-5 w-5 text-brand-gold/50"
-        viewBox="0 0 40 40"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1"
-      >
-        <path d="M20 4 L26 16 L36 20 L26 24 L20 36 L14 24 L4 20 L14 16 Z"
-        ></path>
-        <circle
-          cx="20"
-          cy="20"
-          r="3"
-          fill="currentColor"
-          opacity="0.6"
-          stroke="none"></circle>
+      <svg class="h-5 w-5 text-brand-gold/50" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1">
+        <path d="M20 4 L26 16 L36 20 L26 24 L20 36 L14 24 L4 20 L14 16 Z"></path>
+        <circle cx="20" cy="20" r="3" fill="currentColor" opacity="0.6" stroke="none"></circle>
       </svg>
     </div>
-    <div
-      class="h-px flex-1 bg-gradient-to-l from-transparent via-brand-gold/30 to-brand-gold/50"
-    >
-    </div>
+    <div class="h-px flex-1 bg-gradient-to-l from-transparent via-brand-gold/30 to-brand-gold/50"></div>
   </div>
 
-  <!-- Main content — centrado con max-w correcto -->
-  <div
-    class="relative z-10 mx-auto w-full max-w-2xl px-6 pt-10 pb-10 text-center sm:pt-12 sm:pb-12"
-  >
-    <!-- Mystic eye symbol -->
-    <div
-      class="mx-auto mb-6 flex items-center justify-center"
-      aria-hidden="true"
-    >
-      <svg
-        class="h-10 w-10 text-brand-gold/30"
-        viewBox="0 0 60 60"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="1.2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-      >
-        <path d="M30 10 L42 30 L30 50 L18 30 Z"></path>
-        <path d="M14 30 Q30 18 46 30 Q30 42 14 30 Z"></path>
-        <circle cx="30" cy="30" r="5"></circle>
-        <circle cx="30" cy="30" r="1.5" fill="currentColor" stroke="none"
-        ></circle>
-      </svg>
-    </div>
+  <div class="relative z-10 mx-auto w-full max-w-6xl px-6 pt-10 pb-8 sm:px-10 sm:pt-14 md:px-12 md:pt-16 md:pb-10">
 
-    <!-- Brand name -->
-    <p
-      class="font-heading text-sm font-semibold tracking-[0.25em] text-brand-text/80 sm:text-base sm:tracking-[0.3em]"
-    >
-      TAROT DIVINIDAD
-    </p>
+    <!-- ── MÓVIL: logo centrado + socials + 2 cols links ── -->
+    <!-- ── DESKTOP: 3 columnas lado a lado ── -->
 
-    <!-- Separator 000 -->
-    <div class="mt-2 flex items-center justify-center gap-3">
-      <span class="h-px w-8 bg-gradient-to-r from-transparent to-brand-gold/30"
-      ></span>
-      <p
-        class="font-heading text-[10px] tracking-[0.5em] text-brand-gold/50 sm:text-[11px]"
-      >
-        0 0 0
+    <!-- Logo + tagline + socials: centrado en móvil, izquierda en desktop -->
+    <div class="flex flex-col items-center text-center md:hidden mb-8 gap-4">
+      <Logo class="opacity-90" />
+      <p class="text-[11px] leading-relaxed text-brand-text/35 max-w-[260px]">
+        {siteConfig.description}
       </p>
-      <span class="h-px w-8 bg-gradient-to-l from-transparent to-brand-gold/30"
-      ></span>
+      <!-- Socials -->
+      <div class="flex items-center gap-6 mt-1">
+        <a href="#" class="group" aria-label="Instagram">
+          <svg class="h-5 w-5 text-brand-text/30 transition-all duration-300 group-hover:text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+        <a href="#" class="group" aria-label="TikTok">
+          <svg class="h-5 w-5 text-brand-text/30 transition-all duration-300 group-hover:text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+          </svg>
+        </a>
+        <a href="#" class="group" aria-label="WhatsApp">
+          <svg class="h-5 w-5 text-brand-text/30 transition-all duration-300 group-hover:text-brand-gold" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+          </svg>
+        </a>
+      </div>
     </div>
 
-    <!-- Tagline -->
-    <p
-      class="mt-4 text-[11px] italic leading-relaxed text-brand-text/35 sm:text-xs sm:mt-5"
-    >
-      La claridad no se impone. Se revela.
-    </p>
-
-    <!-- Nav — siempre flex, centrado, con wrap en mobile -->
-    <nav
-      class="mt-8 flex flex-wrap items-center justify-center gap-x-3 gap-y-3 sm:mt-10 sm:gap-x-4"
-    >
-      <a
-        href="/#servicios"
-        class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-text/45 transition-colors duration-300 hover:text-brand-gold sm:text-[11px] sm:tracking-[0.25em]"
-        >Tiradas</a
-      >
-      <span class="text-[6px] text-brand-gold/25">◆</span>
-      <a
-        href="/sobre"
-        class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-text/45 transition-colors duration-300 hover:text-brand-gold sm:text-[11px] sm:tracking-[0.25em]"
-        >Sobre nosotros</a
-      >
-      <span class="text-[6px] text-brand-gold/25">◆</span>
-      <a
-        href="/reservar"
-        class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-text/45 transition-colors duration-300 hover:text-brand-gold sm:text-[11px] sm:tracking-[0.25em]"
-        >Reservar</a
-      >
-      <span class="text-[6px] text-brand-gold/25">◆</span>
-      <a
-        href="/#contacto"
-        class="text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-text/45 transition-colors duration-300 hover:text-brand-gold sm:text-[11px] sm:tracking-[0.25em]"
-        >Contacto</a
-      >
-    </nav>
-
-    <!-- Social icons -->
-    <div class="mt-8 flex items-center justify-center gap-7 sm:mt-10">
-      <a href="#" class="group" aria-label="Instagram">
-        <svg
-          class="h-[18px] w-[18px] text-brand-text/30 transition-all duration-300 group-hover:text-brand-gold group-hover:-translate-y-0.5"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-        </svg>
-      </a>
-      <a href="#" class="group" aria-label="TikTok">
-        <svg
-          class="h-[18px] w-[18px] text-brand-text/30 transition-all duration-300 group-hover:text-brand-gold group-hover:-translate-y-0.5"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
-        </svg>
-      </a>
-      <a href="#" class="group" aria-label="WhatsApp">
-        <svg
-          class="h-[18px] w-[18px] text-brand-text/30 transition-all duration-300 group-hover:text-brand-gold group-hover:-translate-y-0.5"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="1.5"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-        >
-          <path
-            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
-          ></path>
-        </svg>
-      </a>
+    <!-- Links: 2 columnas en móvil, ocultas en desktop (se usan las de abajo) -->
+    <div class="grid grid-cols-2 gap-x-6 gap-y-8 md:hidden mb-8">
+      <!-- Nav -->
+      <div class="flex flex-col gap-3">
+        <p class="text-[9px] font-semibold uppercase tracking-[0.3em] text-brand-gold/50 mb-1">
+          Navegación
+        </p>
+        <nav class="flex flex-col gap-2.5">
+          {navLinks.map((link) => (
+            <a href={link.href} class="text-[11px] tracking-wide text-brand-text/40 transition-colors duration-200 hover:text-brand-gold">
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+      <!-- Legal -->
+      <div class="flex flex-col gap-3">
+        <p class="text-[9px] font-semibold uppercase tracking-[0.3em] text-brand-gold/50 mb-1">
+          Legal
+        </p>
+        <div class="flex flex-col gap-2.5">
+          {legalLinks.map((link) => (
+            <a href={link.href} class="text-[11px] tracking-wide text-brand-text/40 transition-colors duration-200 hover:text-brand-gold">
+              {link.label}
+            </a>
+          ))}
+        </div>
+      </div>
     </div>
 
-    <!-- Contact info -->
-    <div
-      class="mt-5 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-5"
-    >
-      <a
-        href={`mailto:${siteConfig.contact.email}`}
-        class="text-[10px] tracking-wide text-brand-text/30 transition-colors duration-200 hover:text-brand-gold sm:text-[11px]"
-      >
+    <!-- Contacto móvil — centrado -->
+    <div class="flex flex-col items-center gap-1.5 md:hidden mb-2">
+      <a href={`mailto:${siteConfig.contact.email}`} class="text-[10px] tracking-wide text-brand-text/30 transition-colors duration-200 hover:text-brand-gold">
         {siteConfig.contact.email}
       </a>
-      <span class="hidden text-brand-gold/20 sm:inline">·</span>
-      <a
-        href={`tel:+${siteConfig.contact.phone}`}
-        class="text-[10px] tracking-wide text-brand-text/30 transition-colors duration-200 hover:text-brand-gold sm:text-[11px]"
-      >
+      <a href={`tel:+${siteConfig.contact.phone}`} class="text-[10px] tracking-wide text-brand-text/30 transition-colors duration-200 hover:text-brand-gold">
         {formattedPhone}
       </a>
     </div>
 
-    <!-- Bottom divider -->
-    <div
-      class="mx-auto mt-10 flex items-center justify-center gap-3 sm:mt-12"
-      aria-hidden="true"
-    >
-      <span
-        class="h-px w-24 bg-gradient-to-r from-transparent to-brand-gold/15 sm:w-32"
-      ></span>
-      <span class="h-1 w-1 rounded-full bg-brand-gold/20"></span>
-      <span
-        class="h-px w-24 bg-gradient-to-l from-transparent to-brand-gold/15 sm:w-32"
-      ></span>
-    </div>
+    <!-- ── DESKTOP 3 columnas ── -->
+    <div class="hidden md:grid md:grid-cols-3 md:gap-8 lg:gap-16">
 
-    <!-- Legal row -->
-    <div
-      class="mt-5 flex flex-col items-center gap-2 text-[10px] tracking-wide text-brand-text/25 sm:flex-row sm:justify-center sm:gap-6"
-    >
-      <p>&copy; {new Date().getFullYear()} Tarot Divinidad 000</p>
-      <div class="flex items-center gap-4">
-        <a
-          href="/privacidad"
-          class="transition-colors duration-200 hover:text-brand-gold"
-          >Privacidad</a
+      <!-- Col 1: Logo + tagline + socials + back to top -->
+      <div class="flex flex-col gap-6">
+        <Logo class="opacity-90" />
+        <p class="text-[11px] leading-relaxed text-brand-text/35 max-w-[220px]">
+          {siteConfig.description}
+        </p>
+        <div class="flex items-center gap-5">
+          <a href="#" class="group" aria-label="Instagram">
+            <svg class="h-[18px] w-[18px] text-brand-text/30 transition-all duration-300 group-hover:text-brand-gold group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+            </svg>
+          </a>
+          <a href="#" class="group" aria-label="TikTok">
+            <svg class="h-[18px] w-[18px] text-brand-text/30 transition-all duration-300 group-hover:text-brand-gold group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+            </svg>
+          </a>
+          <a href="#" class="group" aria-label="WhatsApp">
+            <svg class="h-[18px] w-[18px] text-brand-text/30 transition-all duration-300 group-hover:text-brand-gold group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+            </svg>
+          </a>
+        </div>
+        <button
+          id="back-to-top-desktop"
+          aria-label="Volver arriba"
+          class="group inline-flex items-center gap-2 self-start border border-brand-gold/20 px-4 py-2 text-[10px] font-semibold uppercase tracking-[0.2em] text-brand-text/40 transition-all duration-300 hover:border-brand-gold/50 hover:text-brand-gold"
         >
-        <span class="text-brand-gold/15">·</span>
-        <a
-          href="/aviso-legal"
-          class="transition-colors duration-200 hover:text-brand-gold"
-          >Aviso Legal</a
-        >
-        <span class="text-brand-gold/15">·</span>
-        <a
-          href="/cookies"
-          class="transition-colors duration-200 hover:text-brand-gold"
-          >Cookies</a
-        >
+          <svg class="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="18 15 12 9 6 15"></polyline>
+          </svg>
+          Volver arriba
+        </button>
       </div>
+
+      <!-- Col 2: Mapa del sitio -->
+      <div class="flex flex-col gap-5">
+        <p class="text-[10px] font-semibold uppercase tracking-[0.3em] text-brand-gold/60">Mapa del sitio</p>
+        <div class="h-px w-8 bg-brand-gold/20"></div>
+        <nav class="flex flex-col gap-3">
+          {navLinks.map((link) => (
+            <a href={link.href} class="group flex items-center gap-2 text-[11px] tracking-wide text-brand-text/40 transition-colors duration-200 hover:text-brand-gold">
+              <span class="h-px w-3 bg-brand-gold/20 transition-all duration-300 group-hover:w-5 group-hover:bg-brand-gold/60"></span>
+              {link.label}
+            </a>
+          ))}
+        </nav>
+      </div>
+
+      <!-- Col 3: Legal + contacto + crédito -->
+      <div class="flex flex-col gap-5">
+        <p class="text-[10px] font-semibold uppercase tracking-[0.3em] text-brand-gold/60">Legal</p>
+        <div class="h-px w-8 bg-brand-gold/20"></div>
+        <div class="flex flex-col gap-3">
+          {legalLinks.map((link) => (
+            <a href={link.href} class="group flex items-center gap-2 text-[11px] tracking-wide text-brand-text/40 transition-colors duration-200 hover:text-brand-gold">
+              <span class="h-px w-3 bg-brand-gold/20 transition-all duration-300 group-hover:w-5 group-hover:bg-brand-gold/60"></span>
+              {link.label}
+            </a>
+          ))}
+        </div>
+        <div class="mt-2 flex flex-col gap-2">
+          <a href={`mailto:${siteConfig.contact.email}`} class="text-[10px] tracking-wide text-brand-text/30 transition-colors duration-200 hover:text-brand-gold">
+            {siteConfig.contact.email}
+          </a>
+          <a href={`tel:+${siteConfig.contact.phone}`} class="text-[10px] tracking-wide text-brand-text/30 transition-colors duration-200 hover:text-brand-gold">
+            {formattedPhone}
+          </a>
+        </div>
+        <p class="mt-auto pt-4 text-[10px] tracking-wide text-brand-text/20">
+          Web por <a href="https://gabrielcodes.dev/" target="_blank" rel="noopener noreferrer" class="transition-colors duration-200 hover:text-brand-gold">Gabriel Saiz</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Bottom divider -->
+  <div class="relative z-10 mx-auto w-full max-w-6xl px-8 sm:px-12">
+    <div class="flex items-center gap-3" aria-hidden="true">
+      <div class="h-px flex-1 bg-gradient-to-r from-brand-gold/15 to-transparent"></div>
+      <span class="h-1 w-1 rounded-full bg-brand-gold/20"></span>
+      <div class="h-px flex-1 bg-gradient-to-l from-brand-gold/15 to-transparent"></div>
+    </div>
+  </div>
+
+  <!-- Copyright bar -->
+  <div class="relative z-10 mx-auto w-full max-w-6xl px-6 py-5 sm:px-10 md:px-12">
+    <div class="flex flex-col items-center gap-1.5 text-center md:flex-row md:justify-between">
+      <p class="text-[10px] tracking-wide text-brand-text/20">
+        &copy; {new Date().getFullYear()} Tarot Divinidad 000 · Todos los derechos reservados
+      </p>
+      <!-- Crédito dev: visible en móvil aquí, en desktop está en col 3 -->
+      <p class="text-[10px] tracking-wide text-brand-text/20 md:hidden">
+        Web por <a href="https://gabrielcodes.dev/" target="_blank" rel="noopener noreferrer" class="transition-colors duration-200 hover:text-brand-gold">Gabriel Saiz</a>
+      </p>
     </div>
   </div>
 </footer>
+
+<!-- Back to top flotante — solo móvil -->
+<button
+  id="back-to-top-mobile"
+  aria-label="Volver arriba"
+  class="fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center border border-brand-gold/30 bg-[#050508]/90 text-brand-gold/60 shadow-lg shadow-black/40 backdrop-blur-sm transition-all duration-300 hover:border-brand-gold/70 hover:text-brand-gold md:hidden opacity-0 pointer-events-none translate-y-3"
+>
+  <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <polyline points="18 15 12 9 6 15"></polyline>
+  </svg>
+</button>
+
+<script>
+  function initBackToTop() {
+    const btnMobile = document.getElementById("back-to-top-mobile");
+    const btnDesktop = document.getElementById("back-to-top-desktop");
+
+    const scrollToTop = () => window.scrollTo({ top: 0, behavior: "smooth" });
+
+    btnMobile?.addEventListener("click", scrollToTop);
+    btnDesktop?.addEventListener("click", scrollToTop);
+
+    const onScroll = () => {
+      const show = window.scrollY > 400;
+      if (btnMobile) {
+        btnMobile.classList.toggle("opacity-100", show);
+        btnMobile.classList.toggle("pointer-events-auto", show);
+        btnMobile.classList.toggle("translate-y-0", show);
+        btnMobile.classList.toggle("opacity-0", !show);
+        btnMobile.classList.toggle("pointer-events-none", !show);
+        btnMobile.classList.toggle("translate-y-3", !show);
+      }
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll();
+  }
+
+  document.addEventListener("astro:page-load", initBackToTop);
+  document.addEventListener("DOMContentLoaded", initBackToTop);
+</script>

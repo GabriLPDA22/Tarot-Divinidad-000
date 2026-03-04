@@ -30,8 +30,33 @@ const faqs = [
   },
 ];
 
+const professionalServiceSchema = {
+  "@type": "ProfessionalService",
+  name: siteConfig.name,
+  alternateName: "divinidad000",
+  description: "Consulta de tarot por teléfono. Sesiones de 20 a 60 minutos para decisiones importantes, cruces de caminos y orientación espiritual.",
+  url: "https://divinidad000.com",
+  telephone: `+${siteConfig.contact.phone}`,
+  email: siteConfig.contact.email,
+  priceRange: "20€ – 60€",
+  areaServed: { "@type": "Country", name: "España" },
+  serviceType: "Consulta de tarot por teléfono",
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Precios de consultas de tarot",
+    itemListElement: tiers.map((tier) => ({
+      "@type": "Offer",
+      itemOffered: {
+        "@type": "Service",
+        name: `Consulta de tarot ${tier.duration} minutos`,
+      },
+      price: tier.price,
+      priceCurrency: "EUR",
+    })),
+  },
+};
+
 const faqSchema = {
-  "@context": "https://schema.org",
   "@type": "FAQPage",
   mainEntity: faqs.map((f) => ({
     "@type": "Question",
@@ -39,12 +64,14 @@ const faqSchema = {
     acceptedAnswer: { "@type": "Answer", text: f.a },
   })),
 };
+
+const schemas = [professionalServiceSchema, faqSchema];
 ---
 
 <BaseLayout
-  title="Reservar consulta de tarot — Tarot Divinidad 000"
-  description="Reserva tu sesión de tarot telefónico. Elige entre tiradas de 20, 30, 45 o 60 minutos. Precios desde 20€. Pago seguro y confirmación inmediata."
-  schema={faqSchema}
+  title="Precios y reserva — Tarot Divinidad 000 | Consulta desde 20€"
+  description="Precios de consultas de tarot por teléfono: 20€ (20 min), 30€ (30 min), 45€ (45 min), 60€ (60 min). Reserva online o por WhatsApp. Ideal para decisiones importantes y cruces de caminos."
+  schema={schemas}
 >
   <Header />
   <main class="relative min-h-screen overflow-hidden bg-brand-bg pt-36 pb-20 sm:pt-40 md:pt-44 md:pb-28 lg:pt-48 2xl:pt-52 3xl:pt-60 3xl:pb-36">

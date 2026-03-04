@@ -17,9 +17,9 @@ const whatsappUrl = buildWhatsAppUrl(siteConfig.whatsapp.phone, siteConfig.whats
   <!-- Top glow line -->
   <div class="absolute top-0 left-1/2 h-px w-[60%] -translate-x-1/2 bg-gradient-to-r from-transparent via-brand-gold/20 to-transparent" aria-hidden="true"></div>
 
-  <div class="relative z-10 mx-auto max-w-3xl px-6 text-center md:px-8 3xl:max-w-4xl 3xl:px-12" data-parallax-el="0.06">
+  <div class="relative z-10 mx-auto max-w-3xl px-6 text-center md:px-8 3xl:max-w-4xl 3xl:px-12">
     <!-- Decorative top accent -->
-    <div class="mx-auto mb-8 flex items-center justify-center gap-3" aria-hidden="true">
+    <div class="cta-content mx-auto mb-8 flex items-center justify-center gap-3" aria-hidden="true">
       <span class="h-px w-16 bg-gradient-to-r from-transparent to-brand-gold/30"></span>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5 text-brand-gold" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
         <path d="M12 2 L15 10 L12 18 L9 10 Z"/><circle cx="12" cy="10" r="2" fill="currentColor"/>
@@ -27,17 +27,17 @@ const whatsappUrl = buildWhatsAppUrl(siteConfig.whatsapp.phone, siteConfig.whats
       <span class="h-px w-16 bg-gradient-to-l from-transparent to-brand-gold/30"></span>
     </div>
 
-    <h2 class="font-heading text-2xl font-bold text-brand-text md:text-3xl 3xl:text-4xl">
+    <h2 class="cta-content font-heading text-2xl font-bold text-brand-text md:text-3xl 3xl:text-4xl">
       Tu siguiente paso empieza aquí
     </h2>
 
-    <p class="mx-auto mt-5 max-w-lg text-base leading-relaxed text-brand-text/75 md:mt-6 md:text-lg 3xl:mt-8 3xl:text-xl">
+    <p class="cta-content mx-auto mt-5 max-w-lg text-base leading-relaxed text-brand-text/75 md:mt-6 md:text-lg 3xl:mt-8 3xl:text-xl">
       Reserva tu consulta y comienza tu proceso.
     </p>
 
     <!-- CTAs -->
     <div class="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center sm:gap-5 md:mt-12 3xl:mt-16 3xl:gap-7">
-      <a href="/reservar" class="btn-primary w-full sm:w-auto">
+      <a href="/reservar" class="cta-btn cta-btn--1 btn-primary w-full sm:w-auto">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
           <line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line>
@@ -45,7 +45,7 @@ const whatsappUrl = buildWhatsAppUrl(siteConfig.whatsapp.phone, siteConfig.whats
         </svg>
         Reservar ahora
       </a>
-      <a href={whatsappUrl} class="btn-secondary w-full sm:w-auto" target="_blank" rel="noopener noreferrer">
+      <a href={whatsappUrl} class="cta-btn cta-btn--2 btn-secondary w-full sm:w-auto" target="_blank" rel="noopener noreferrer">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 24 24" fill="currentColor">
           <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
         </svg>
@@ -54,10 +54,54 @@ const whatsappUrl = buildWhatsAppUrl(siteConfig.whatsapp.phone, siteConfig.whats
     </div>
 
     <!-- Bottom accent -->
-    <div class="mx-auto mt-12 flex items-center justify-center gap-3" aria-hidden="true">
+    <div class="cta-content mx-auto mt-12 flex items-center justify-center gap-3" aria-hidden="true">
       <span class="h-px w-8 bg-brand-gold/20"></span>
       <span class="h-1.5 w-1.5 rounded-full bg-brand-gold/30"></span>
       <span class="h-px w-8 bg-brand-gold/20"></span>
     </div>
   </div>
 </section>
+
+<style>
+  /* Contenido principal: fade + scale suave */
+  .cta-content {
+    opacity: 0;
+    transform: scale(0.97) translateY(14px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .cta-content.is-visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  /* Botones: aparecen después del texto */
+  .cta-btn {
+    opacity: 0;
+    transform: translateY(12px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .cta-btn.is-visible { opacity: 1; transform: translateY(0); }
+  .cta-btn--1 { transition-delay: 200ms; }
+  .cta-btn--2 { transition-delay: 310ms; }
+</style>
+
+<script>
+  function initCTA() {
+    const targets = document.querySelectorAll<HTMLElement>(".cta-content, .cta-btn");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    targets.forEach((el) => observer.observe(el));
+  }
+
+  document.addEventListener("astro:page-load", initCTA);
+  document.addEventListener("DOMContentLoaded", initCTA);
+</script>

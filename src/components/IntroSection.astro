@@ -1,128 +1,309 @@
 ---
 import DecoArt from "./DecoArt.astro";
-
-const cards = [
-  {
-    title: "Claridad",
-    text: "Comprende lo que estás viviendo con calma y perspectiva.",
-    icon: "eye",
-  },
-  {
-    title: "Autoconocimiento",
-    text: "Escucha tu intuición y reconecta contigo.",
-    icon: "moon",
-  },
-  {
-    title: "Decisión",
-    text: "Elige desde tu verdad, no desde el miedo.",
-    icon: "star",
-  },
-] as const;
 ---
 
-<section class="relative overflow-hidden bg-brand-bg py-20 md:py-28 3xl:py-36" id="enfoque">
-  <!-- Decorative SVG (LEFT) — sol/luna: dualidad, parallax suave -->
+<section
+  class="relative overflow-hidden bg-brand-bg py-20 md:py-28 3xl:py-36"
+  id="enfoque"
+>
+  <!-- Ambient glow -->
+  <div
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_75%_50%,rgba(184,162,106,0.05)_0%,transparent_65%)]"
+    aria-hidden="true"
+  ></div>
+
   <DecoArt
     variant="sun-moon"
     class="left-[-3rem] top-1/2 z-[1] -translate-y-1/2 h-[300px] w-[300px] md:left-[-1rem] md:h-[400px] md:w-[400px] 3xl:h-[550px] 3xl:w-[550px]"
-    opacity={0.10}
+    opacity={0.08}
   />
 
-  <div class="relative z-10 mx-auto max-w-6xl px-6 md:px-8 2xl:max-w-7xl 3xl:max-w-[90rem] 3xl:px-12" data-parallax-el="0.06">
-    <!-- Section title -->
-    <h2 class="text-center font-heading text-sm font-semibold uppercase tracking-[0.25em] text-brand-gold md:text-base 3xl:text-lg">
-      Acompañamiento consciente
-    </h2>
+  <div class="relative z-10 mx-auto max-w-6xl px-6 md:px-8 2xl:max-w-7xl 3xl:max-w-[90rem] 3xl:px-12">
 
-    <!-- Divider -->
-    <div class="mx-auto mt-5 flex items-center justify-center gap-4" aria-hidden="true">
-      <span class="h-px w-12 bg-gradient-to-r from-transparent to-brand-gold/30"></span>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4 text-brand-gold/60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z"/>
-        <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
-      </svg>
-      <span class="h-px w-12 bg-gradient-to-l from-transparent to-brand-gold/30"></span>
+    <!-- Section header -->
+    <div class="intro-header mb-14 md:mb-16 3xl:mb-20">
+      <h2 class="text-center font-heading text-sm font-semibold uppercase tracking-[0.25em] text-brand-gold md:text-base 3xl:text-lg">
+        Acompañamiento consciente
+      </h2>
+      <div class="mx-auto mt-5 flex items-center justify-center gap-4" aria-hidden="true">
+        <span class="h-px w-12 bg-gradient-to-r from-transparent to-brand-gold/30"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4 text-brand-gold/60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z"/>
+          <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+        </svg>
+        <span class="h-px w-12 bg-gradient-to-l from-transparent to-brand-gold/30"></span>
+      </div>
+      <p class="mx-auto mt-6 max-w-xl text-center text-base leading-relaxed text-brand-text/85 md:mt-8 md:text-lg 3xl:mt-10 3xl:max-w-2xl 3xl:text-xl">
+        No predecimos el futuro.<br />
+        Facilitamos claridad, autoconocimiento y decisiones desde tu verdad.
+      </p>
     </div>
 
-    <!-- Paragraph -->
-    <p class="mx-auto mt-6 max-w-xl text-center text-base leading-relaxed text-brand-text/85 md:mt-8 md:text-lg 3xl:mt-10 3xl:max-w-2xl 3xl:text-xl">
-      No predecimos el futuro.<br />
-      Facilitamos claridad, autoconocimiento y decisiones desde tu verdad.
-    </p>
+    <!-- ── Bento grid ── -->
+    <div class="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5 3xl:gap-6" style="grid-template-rows: auto auto;">
 
-    <!-- Cards grid -->
-    <div class="mt-14 grid gap-6 lg:grid-cols-3 md:mt-16 md:gap-8 3xl:mt-20" data-parallax-el="0.04">
-      {cards.map((card) => (
-        <article class="tarot-card group relative overflow-hidden rounded-lg border border-brand-gold/15 bg-[#0a0a11] p-7 transition-all duration-400 hover:border-brand-gold/35 hover:shadow-[0_0_30px_-8px_rgba(184,162,106,0.15)] md:p-8 3xl:p-10">
-          <!-- Double border effect -->
-          <div class="pointer-events-none absolute inset-[5px] rounded-[5px] border border-brand-gold/8 transition-all duration-400 group-hover:border-brand-gold/15" aria-hidden="true"></div>
+      <!-- ─ Card 1: Claridad — top left, ocupa 2 columnas ─ -->
+      <article
+        class="bento-card bento-card--1 group relative overflow-hidden border border-brand-gold/15 bg-[#0a0a11] p-8 transition-[border-color,box-shadow] duration-500 hover:border-brand-gold/35 hover:shadow-[0_0_40px_-10px_rgba(184,162,106,0.18)] md:col-span-2 md:p-10 3xl:p-12"
+      >
+        <div class="bento-inner-border" aria-hidden="true"></div>
 
-          <!-- Corner accents -->
-          <svg class="pointer-events-none absolute top-2 left-2 h-4 w-4 text-brand-gold/20 transition-colors duration-400 group-hover:text-brand-gold/40" aria-hidden="true">
-            <path d="M0 12 L0 0 L12 0" fill="none" stroke="currentColor" stroke-width="1"/>
+        <!-- Watermark -->
+        <div class="card-watermark" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 300" fill="none" stroke="#B8A26A" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" class="h-full w-auto" style="transform:scale(1.3) translateY(10%)">
+            <rect x="0" y="0" width="180" height="300" rx="6"/>
+            <rect x="12" y="12" width="156" height="276" rx="3" opacity="0.5"/>
+            <path d="M12,35 L12,12 L35,12 M168,35 L168,12 L145,12 M12,265 L12,288 L35,288 M168,265 L168,288 L145,288" opacity="0.6"/>
+            <path d="M-40,0 C-40,-22 -20,-36 0,-36 C20,-36 40,-22 40,0 C40,22 20,36 0,36 C-20,36 -40,22 -40,0 Z" transform="translate(90,150)"/>
+            <circle cx="90" cy="150" r="12"/>
+            <circle cx="90" cy="150" r="4" fill="#B8A26A"/>
           </svg>
-          <svg class="pointer-events-none absolute right-2 bottom-2 h-4 w-4 text-brand-gold/20 transition-colors duration-400 group-hover:text-brand-gold/40" aria-hidden="true">
-            <path d="M16 4 L16 16 L4 16" fill="none" stroke="currentColor" stroke-width="1"/>
-          </svg>
+        </div>
 
-          <!-- Decorative tarot SVG watermark -->
-          <div class="pointer-events-none absolute inset-0 z-[1] flex items-center justify-center opacity-[0.04] blur-[1px] transition-opacity duration-400 group-hover:opacity-[0.06]" style="transform: scale(1.3) translateY(10%);" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 300" fill="none" stroke="#B8A26A" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" class="h-full w-auto">
-              <rect x="0" y="0" width="180" height="300" rx="6"/>
-              <rect x="12" y="12" width="156" height="276" rx="3" opacity="0.5"/>
-              <path d="M12,35 L12,12 L35,12 M168,35 L168,12 L145,12 M12,265 L12,288 L35,288 M168,265 L168,288 L145,288" opacity="0.6"/>
-              {card.icon === "eye" && (
-                <g transform="translate(90, 150)">
-                  <path d="M-40,0 C-40,-22 -20,-36 0,-36 C20,-36 40,-22 40,0 C40,22 20,36 0,36 C-20,36 -40,22 -40,0 Z"/>
-                  <circle cx="0" cy="0" r="12"/>
-                  <circle cx="0" cy="0" r="4" fill="#B8A26A"/>
-                </g>
-              )}
-              {card.icon === "moon" && (
-                <g transform="translate(90, 150)">
-                  <path d="M10,-40 A40,40 0 1,0 10,40 A30,30 0 1,1 10,-40 Z"/>
-                  <circle cx="-5" cy="-15" r="2" fill="#B8A26A"/>
-                </g>
-              )}
-              {card.icon === "star" && (
-                <g transform="translate(90, 150)">
-                  <polygon points="0,-40 12,-12 42,-12 18,6 28,36 0,18 -28,36 -18,6 -42,-12 -12,-12"/>
-                </g>
-              )}
+        <div class="relative z-10 flex flex-col gap-6 md:flex-row md:items-center md:gap-10">
+          <!-- Icon -->
+          <div class="flex-shrink-0 flex h-16 w-16 items-center justify-center rounded-full border border-brand-gold/25 bg-brand-gold/5 text-brand-gold transition-all duration-500 group-hover:bg-brand-gold/10 group-hover:shadow-[0_0_20px_-4px_rgba(184,162,106,0.35)] md:h-20 md:w-20">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-7 w-7 md:h-9 md:w-9">
+              <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+              <circle cx="12" cy="12" r="3"/>
+            </svg>
+          </div>
+          <!-- Text -->
+          <div>
+            <h3 class="font-heading text-xl font-semibold tracking-wide text-brand-text md:text-2xl 3xl:text-3xl">
+              Claridad
+            </h3>
+            <p class="mt-3 text-sm leading-relaxed text-brand-text/65 md:text-base 3xl:text-lg">
+              Comprende lo que estás viviendo con calma y perspectiva.<br class="hidden md:block"/>
+              El tarot actúa como espejo: no dicta, refleja lo que ya sabes.
+            </p>
+          </div>
+        </div>
+      </article>
+
+      <!-- ─ Card 2: Autoconocimiento — right, tall (2 filas) ─ -->
+      <article
+        class="bento-card bento-card--2 group relative overflow-hidden border border-brand-gold/15 bg-[#0a0a11] p-8 transition-[border-color,box-shadow] duration-500 hover:border-brand-gold/35 hover:shadow-[0_0_40px_-10px_rgba(184,162,106,0.18)] md:col-span-1 md:row-span-2 md:p-10 3xl:p-12"
+      >
+        <div class="bento-inner-border" aria-hidden="true"></div>
+
+        <!-- Watermark -->
+        <div class="card-watermark" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 300" fill="none" stroke="#B8A26A" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" class="h-full w-auto" style="transform:scale(1.3) translateY(10%)">
+            <rect x="0" y="0" width="180" height="300" rx="6"/>
+            <rect x="12" y="12" width="156" height="276" rx="3" opacity="0.5"/>
+            <path d="M12,35 L12,12 L35,12 M168,35 L168,12 L145,12 M12,265 L12,288 L35,288 M168,265 L168,288 L145,288" opacity="0.6"/>
+            <path d="M10,-40 A40,40 0 1,0 10,40 A30,30 0 1,1 10,-40 Z" transform="translate(90,150)"/>
+            <circle cx="85" cy="135" r="2" fill="#B8A26A"/>
+          </svg>
+        </div>
+
+        <div class="relative z-10 flex h-full flex-col gap-6 md:justify-between">
+          <!-- Icon -->
+          <div class="flex h-14 w-14 items-center justify-center rounded-full border border-brand-gold/25 bg-brand-gold/5 text-brand-gold transition-all duration-500 group-hover:bg-brand-gold/10 group-hover:shadow-[0_0_20px_-4px_rgba(184,162,106,0.35)] 3xl:h-16 3xl:w-16">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 3xl:h-6 3xl:w-6">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
             </svg>
           </div>
 
-          <!-- Icon circle (centered) -->
-          <div class="relative z-10 mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full border border-brand-gold/25 bg-brand-gold/5 text-brand-gold transition-all duration-400 group-hover:bg-brand-gold/10 group-hover:shadow-[0_0_16px_-4px_rgba(184,162,106,0.3)] 3xl:h-16 3xl:w-16">
-            {card.icon === "eye" && (
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 3xl:h-6 3xl:w-6">
-                <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                <circle cx="12" cy="12" r="3"/>
-              </svg>
-            )}
-            {card.icon === "moon" && (
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 3xl:h-6 3xl:w-6">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
-              </svg>
-            )}
-            {card.icon === "star" && (
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 3xl:h-6 3xl:w-6">
-                <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
-              </svg>
-            )}
+          <div>
+            <h3 class="font-heading text-lg font-semibold tracking-wide text-brand-text md:text-xl 3xl:text-2xl">
+              Autoconocimiento
+            </h3>
+            <p class="mt-3 text-sm leading-relaxed text-brand-text/65 3xl:text-base">
+              Escucha tu intuición y reconecta contigo. Cada carta que aparece es un mensaje de tu propio interior esperando ser escuchado.
+            </p>
           </div>
 
-          <!-- Title (centered) -->
-          <h3 class="relative z-10 mb-2 text-center font-heading text-base font-semibold tracking-wide text-brand-text md:text-lg 3xl:text-xl">
-            {card.title}
-          </h3>
+          <!-- Divider ornamental — solo visible en la versión tall -->
+          <div class="hidden md:flex items-center gap-3" aria-hidden="true">
+            <span class="h-px flex-1 bg-brand-gold/10"></span>
+            <svg viewBox="0 0 12 12" class="h-2 w-2 text-brand-gold/30" fill="currentColor">
+              <polygon points="6,0 12,6 6,12 0,6"/>
+            </svg>
+            <span class="h-px flex-1 bg-brand-gold/10"></span>
+          </div>
 
-          <!-- Text (centered) -->
-          <p class="relative z-10 text-center text-sm leading-relaxed text-brand-text/70 md:text-base 3xl:text-lg">
-            {card.text}
+          <p class="hidden md:block text-[11px] italic leading-relaxed text-brand-text/35 3xl:text-xs">
+            "El camino hacia el exterior comienza siempre en el interior."
           </p>
-        </article>
-      ))}
+        </div>
+      </article>
+
+      <!-- ─ Card 3: Decisión — bottom left ─ -->
+      <article
+        class="bento-card bento-card--3 group relative overflow-hidden border border-brand-gold/15 bg-[#0a0a11] p-8 transition-[border-color,box-shadow] duration-500 hover:border-brand-gold/35 hover:shadow-[0_0_40px_-10px_rgba(184,162,106,0.18)] md:col-span-1 md:p-10 3xl:p-12"
+      >
+        <div class="bento-inner-border" aria-hidden="true"></div>
+
+        <!-- Watermark -->
+        <div class="card-watermark" aria-hidden="true">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 300" fill="none" stroke="#B8A26A" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" class="h-full w-auto" style="transform:scale(1.3) translateY(10%)">
+            <rect x="0" y="0" width="180" height="300" rx="6"/>
+            <rect x="12" y="12" width="156" height="276" rx="3" opacity="0.5"/>
+            <path d="M12,35 L12,12 L35,12 M168,35 L168,12 L145,12 M12,265 L12,288 L35,288 M168,265 L168,288 L145,288" opacity="0.6"/>
+            <polygon points="90,110 102,138 132,138 108,156 118,184 90,166 62,184 72,156 48,138 78,138" transform="translate(0,0)"/>
+          </svg>
+        </div>
+
+        <div class="relative z-10 flex flex-col gap-5">
+          <div class="flex h-14 w-14 items-center justify-center rounded-full border border-brand-gold/25 bg-brand-gold/5 text-brand-gold transition-all duration-500 group-hover:bg-brand-gold/10 group-hover:shadow-[0_0_20px_-4px_rgba(184,162,106,0.35)] 3xl:h-16 3xl:w-16">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5 3xl:h-6 3xl:w-6">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+            </svg>
+          </div>
+          <h3 class="font-heading text-lg font-semibold tracking-wide text-brand-text md:text-xl 3xl:text-2xl">
+            Decisión
+          </h3>
+          <p class="text-sm leading-relaxed text-brand-text/65 3xl:text-base">
+            Elige desde tu verdad, no desde el miedo. Con claridad interior, cada paso tiene dirección.
+          </p>
+        </div>
+      </article>
+
+      <!-- ─ Card 4: Quote block — bottom right ─ -->
+      <article
+        class="bento-card bento-card--4 group relative overflow-hidden border border-brand-gold/20 bg-gradient-to-br from-brand-gold/[0.08] via-[#0d0d14] to-[#0a0a11] p-8 transition-[border-color,box-shadow] duration-500 hover:border-brand-gold/40 hover:shadow-[0_0_40px_-10px_rgba(184,162,106,0.22)] md:col-span-1 md:p-10 3xl:p-12"
+      >
+        <!-- Glow orb -->
+        <div class="pointer-events-none absolute -top-10 -left-10 h-40 w-40 rounded-full bg-brand-gold/10 blur-3xl transition-all duration-700 group-hover:bg-brand-gold/20 group-hover:blur-2xl" aria-hidden="true"></div>
+        <!-- Glow orb 2 -->
+        <div class="pointer-events-none absolute -bottom-6 -right-6 h-28 w-28 rounded-full bg-brand-gold/6 blur-2xl transition-all duration-700 group-hover:bg-brand-gold/14" aria-hidden="true"></div>
+
+        <!-- Watermark diamond -->
+        <div class="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.055] group-hover:opacity-[0.09] transition-opacity duration-500" aria-hidden="true">
+          <svg viewBox="0 0 200 200" class="h-52 w-52 text-brand-gold" fill="none" stroke="currentColor" stroke-width="0.6">
+            <polygon points="100,8 192,100 100,192 8,100"/>
+            <polygon points="100,28 172,100 100,172 28,100"/>
+            <circle cx="100" cy="100" r="28"/>
+            <line x1="100" y1="8" x2="100" y2="28"/>
+            <line x1="100" y1="172" x2="100" y2="192"/>
+            <line x1="8" y1="100" x2="28" y2="100"/>
+            <line x1="172" y1="100" x2="192" y2="100"/>
+          </svg>
+        </div>
+
+        <div class="relative z-10 flex h-full flex-col justify-between gap-8">
+          <!-- Quote mark -->
+          <svg class="h-7 w-7 text-brand-gold/35" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
+          </svg>
+
+          <blockquote>
+            <p class="font-heading text-xl font-light italic leading-snug text-brand-text/85 md:text-2xl 3xl:text-3xl">
+              La claridad no se impone.
+            </p>
+            <p class="font-heading text-xl font-semibold italic leading-snug text-brand-gold md:text-2xl 3xl:text-3xl">
+              Se revela.
+            </p>
+          </blockquote>
+
+          <p class="text-[10px] uppercase tracking-[0.3em] text-brand-gold/35">
+            Tarot Divinidad 000
+          </p>
+        </div>
+      </article>
+
     </div>
   </div>
 </section>
+
+<style>
+  /* ── Entrada: fade + scale suave al hacer scroll ── */
+  .bento-card,
+  .intro-header {
+    opacity: 0;
+    transform: scale(0.97) translateY(16px);
+  }
+  .bento-card {
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s ease,
+      border-color 0.4s ease,
+      box-shadow 0.4s ease;
+  }
+  .intro-header {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .bento-card.is-visible,
+  .intro-header.is-visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  /* Delays escalonados */
+  .bento-card--1 { transition-delay: 0ms;   }
+  .bento-card--2 { transition-delay: 80ms;  }
+  .bento-card--3 { transition-delay: 160ms; }
+  .bento-card--4 { transition-delay: 240ms; }
+
+  /* ── Borde interior ── */
+  .bento-inner-border {
+    position: absolute;
+    inset: 6px;
+    border: 1px solid rgba(184, 162, 106, 0.06);
+    pointer-events: none;
+    transition: border-color 0.4s ease;
+  }
+  .bento-card:hover .bento-inner-border {
+    border-color: rgba(184, 162, 106, 0.13);
+  }
+
+  /* ── Esquinas decorativas ── */
+  .bento-card::before,
+  .bento-card::after {
+    content: "";
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-style: solid;
+    border-color: rgba(184, 162, 106, 0.18);
+    pointer-events: none;
+    transition: border-color 0.4s ease, width 0.4s ease, height 0.4s ease;
+    z-index: 20;
+  }
+  .bento-card::before { top: 8px;    left: 8px;    border-width: 1px 0 0 1px; }
+  .bento-card::after  { bottom: 8px; right: 8px;   border-width: 0 1px 1px 0; }
+  .bento-card:hover::before,
+  .bento-card:hover::after {
+    border-color: rgba(184, 162, 106, 0.40);
+    width: 20px;
+    height: 20px;
+  }
+
+  /* ── Watermark ── */
+  .card-watermark {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.035;
+    filter: blur(1px);
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+  }
+  .bento-card:hover .card-watermark { opacity: 0.065; }
+</style>
+
+<script>
+  function initIntroSection() {
+    const targets = document.querySelectorAll<HTMLElement>(".bento-card, .intro-header");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08 }
+    );
+    targets.forEach((el) => observer.observe(el));
+  }
+
+  document.addEventListener("astro:page-load", initIntroSection);
+  document.addEventListener("DOMContentLoaded", initIntroSection);
+</script>

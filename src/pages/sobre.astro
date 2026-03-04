@@ -32,19 +32,12 @@ import DecoArt from "../components/DecoArt.astro";
     </div>
 
     <div class="relative z-10 mx-auto w-full max-w-7xl">
-      <div class="grid grid-cols-1 items-center gap-16 lg:grid-cols-12 lg:gap-12">
-        
-        <div class="flex flex-col text-left lg:col-span-5">
+      <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-8">
+
+        <!-- Texto -->
+        <div class="sobre-text flex flex-col text-left lg:col-span-5">
           <div class="mb-8 md:mb-10" aria-hidden="true">
-            <svg
-              class="h-14 w-14 text-brand-gold/30 sm:h-16 sm:w-16 drop-shadow-[0_0_15px_rgba(184,162,106,0.2)]"
-              viewBox="0 0 60 60"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="1"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
+            <svg class="h-14 w-14 text-brand-gold/30 sm:h-16 sm:w-16 drop-shadow-[0_0_15px_rgba(184,162,106,0.2)]" viewBox="0 0 60 60" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
               <path d="M30 12 L42 30 L30 48 L18 30 Z" stroke-width="1.2"></path>
               <path d="M12 30 Q30 16 48 30 Q30 44 12 30 Z"></path>
               <circle cx="30" cy="30" r="6"></circle>
@@ -54,61 +47,90 @@ import DecoArt from "../components/DecoArt.astro";
             </svg>
           </div>
 
-          <h1
-            class="font-heading text-4xl font-light leading-[1.1] text-brand-text md:text-5xl lg:text-6xl"
-          >
+          <h1 class="font-heading text-4xl font-light leading-[1.1] text-brand-text md:text-5xl lg:text-6xl">
             Acompañamiento <br />
             <span class="italic text-brand-gold">consciente.</span>
           </h1>
 
-          <div
-            class="mt-6 flex items-center gap-4"
-            aria-hidden="true"
-          >
-            <span
-              class="h-px w-10 bg-gradient-to-r from-brand-gold/30 to-transparent sm:w-14"
-            ></span>
-            <span class="text-brand-gold/40 text-[10px]">✦</span>
-            <span
-              class="h-px w-10 bg-gradient-to-l from-brand-gold/30 to-transparent sm:w-14"
-            ></span>
+          <div class="mt-6 flex items-center gap-4" aria-hidden="true">
+            <span class="h-px w-10 bg-gradient-to-r from-brand-gold/30 to-transparent sm:w-14"></span>
+            <span class="text-[10px] text-brand-gold/40">✦</span>
+            <span class="h-px w-10 bg-gradient-to-l from-brand-gold/30 to-transparent sm:w-14"></span>
           </div>
 
-          <p
-            class="mt-7 max-w-md text-sm leading-[1.9] text-brand-text/60 sm:mt-8 sm:max-w-lg sm:text-base md:mt-10 md:text-lg md:leading-[1.85]"
-          >
-            No buscamos imponer respuestas. Creamos un espacio de claridad, escucha y orientación para acompañarte en
-            momentos de decisión.<br /><br />
+          <p class="mt-7 max-w-md text-sm leading-[1.9] text-brand-text/60 sm:mt-8 sm:max-w-lg sm:text-base md:mt-10 md:text-lg md:leading-[1.85]">
+            No buscamos imponer respuestas. Creamos un espacio de claridad, escucha y orientación para acompañarte en momentos de decisión.<br /><br />
             El tarot no es una sentencia, es un espejo. Mi propósito es ayudarte a mirar en ese espejo para que encuentres la fuerza y las respuestas que ya residen en ti.
           </p>
         </div>
 
-        <div class="lg:col-span-7">
-          <div class="grid grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
-            
-            <div class="flex flex-col gap-4 pt-12 sm:gap-6 sm:pt-20 lg:pt-32">
-              <div class="group relative aspect-[3/4] w-full overflow-hidden rounded-lg border border-brand-gold/20 bg-[#09090f] transition-all duration-500 hover:border-brand-gold/40 hover:shadow-[0_0_30px_-10px_rgba(184,162,106,0.15)]">
-                <div class="absolute inset-0 flex flex-col items-center justify-center text-brand-gold/30 transition-colors duration-500 group-hover:text-brand-gold/60">
-                  <svg class="mb-3 h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-                  <span class="font-heading text-[10px] uppercase tracking-widest">Retrato / Vertical</span>
-                </div>
-              </div>
+        <!-- Spread de 3 cartas SVG -->
+        <div class="sobre-cards lg:col-span-7 flex items-center justify-center">
+          <div class="relative flex items-end justify-center gap-0 w-full max-w-lg mx-auto" style="height: 380px;">
+
+            <!-- Carta izquierda: Pasado -->
+            <div class="spread-card absolute" style="left: 2%; bottom: 0; transform: rotate(-12deg); transform-origin: bottom center; width: 28%;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 520" fill="none" stroke="#B8A26A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-full h-auto opacity-50">
+                <rect x="10" y="10" width="300" height="500" rx="12" stroke-width="2"/>
+                <rect x="25" y="25" width="270" height="470" rx="6" stroke-width="1" opacity="0.5"/>
+                <path d="M 25 45 L 25 25 L 45 25 M 295 45 L 295 25 L 275 25 M 25 475 L 25 495 L 45 495 M 295 475 L 295 495 L 275 495" stroke-width="1.5"/>
+                <circle cx="25" cy="25" r="2" fill="#B8A26A"/><circle cx="295" cy="25" r="2" fill="#B8A26A"/>
+                <circle cx="25" cy="495" r="2" fill="#B8A26A"/><circle cx="295" cy="495" r="2" fill="#B8A26A"/>
+                <path d="M 40 140 L 280 140" stroke-width="0.75" opacity="0.3"/>
+                <g transform="translate(160, 140)">
+                  <path d="M -15 -45 A 50 50 0 1 0 35 35 A 40 40 0 1 1 -15 -45 Z" fill="#B8A26A" opacity="0.08" stroke-width="2"/>
+                  <path d="M -15 -45 A 50 50 0 1 0 35 35 A 40 40 0 1 1 -15 -45 Z" stroke-width="2"/>
+                  <circle cx="-45" cy="-20" r="1.5" fill="#B8A26A"/>
+                  <circle cx="45" cy="-35" r="2" fill="#B8A26A"/>
+                </g>
+                <text x="160" y="370" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="13" fill="#B8A26A" opacity="0.5" letter-spacing="4" font-weight="300">PASADO</text>
+                <path d="M 160 480 L 165 485 L 160 490 L 155 485 Z" fill="#B8A26A"/>
+              </svg>
             </div>
 
-            <div class="flex flex-col gap-4 sm:gap-6">
-              <div class="group relative aspect-square w-full overflow-hidden rounded-lg border border-brand-gold/20 bg-[#09090f] transition-all duration-500 hover:border-brand-gold/40 hover:shadow-[0_0_30px_-10px_rgba(184,162,106,0.15)]">
-                <div class="absolute inset-0 flex flex-col items-center justify-center text-brand-gold/30 transition-colors duration-500 group-hover:text-brand-gold/60">
-                  <svg class="mb-3 h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-                  <span class="font-heading text-[10px] uppercase tracking-widest">Detalle / Cartas</span>
-                </div>
-              </div>
+            <!-- Carta central: Presente -->
+            <div class="spread-card absolute" style="left: 50%; bottom: 0; transform: translateX(-50%); width: 32%;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 520" fill="none" stroke="#B8A26A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-full h-auto drop-shadow-[0_0_24px_rgba(184,162,106,0.18)]">
+                <rect x="10" y="10" width="300" height="500" rx="12" stroke-width="2"/>
+                <rect x="25" y="25" width="270" height="470" rx="6" stroke-width="1" opacity="0.5"/>
+                <path d="M 25 45 L 25 25 L 45 25 M 295 45 L 295 25 L 275 25 M 25 475 L 25 495 L 45 495 M 295 475 L 295 495 L 275 495" stroke-width="1.5"/>
+                <circle cx="25" cy="25" r="2" fill="#B8A26A"/><circle cx="295" cy="25" r="2" fill="#B8A26A"/>
+                <circle cx="25" cy="495" r="2" fill="#B8A26A"/><circle cx="295" cy="495" r="2" fill="#B8A26A"/>
+                <path d="M 40 140 L 280 140" stroke-width="0.75" opacity="0.3"/>
+                <path d="M 60 140 A 100 100 0 0 1 260 140" stroke-width="0.75" stroke-dasharray="3 5" opacity="0.6"/>
+                <g transform="translate(160, 140)">
+                  <path d="M -50 0 Q 0 -40 50 0 Q 0 40 -50 0 Z" stroke-width="2"/>
+                  <circle cx="0" cy="0" r="16" stroke-width="1.5"/>
+                  <circle cx="0" cy="0" r="4" fill="#B8A26A"/>
+                  <line x1="0" y1="-55" x2="0" y2="-75" stroke-width="1"/>
+                  <line x1="-38" y1="-38" x2="-52" y2="-52" stroke-width="1"/>
+                  <line x1="38" y1="-38" x2="52" y2="-52" stroke-width="1"/>
+                </g>
+                <text x="160" y="370" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="13" fill="#B8A26A" opacity="0.7" letter-spacing="4" font-weight="300">PRESENTE</text>
+                <path d="M 160 480 L 165 485 L 160 490 L 155 485 Z" fill="#B8A26A"/>
+                <line x1="135" y1="485" x2="145" y2="485" stroke-width="1" opacity="0.5"/>
+                <line x1="175" y1="485" x2="185" y2="485" stroke-width="1" opacity="0.5"/>
+              </svg>
+            </div>
 
-              <div class="group relative aspect-[4/5] w-full overflow-hidden rounded-lg border border-brand-gold/20 bg-[#09090f] transition-all duration-500 hover:border-brand-gold/40 hover:shadow-[0_0_30px_-10px_rgba(184,162,106,0.15)]">
-                <div class="absolute inset-0 flex flex-col items-center justify-center text-brand-gold/30 transition-colors duration-500 group-hover:text-brand-gold/60">
-                  <svg class="mb-3 h-8 w-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><circle cx="8.5" cy="8.5" r="1.5"></circle><polyline points="21 15 16 10 5 21"></polyline></svg>
-                  <span class="font-heading text-[10px] uppercase tracking-widest">Espacio / Ambiente</span>
-                </div>
-              </div>
+            <!-- Carta derecha: Futuro -->
+            <div class="spread-card absolute" style="right: 2%; bottom: 0; transform: rotate(12deg); transform-origin: bottom center; width: 28%;">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 520" fill="none" stroke="#B8A26A" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-full h-auto opacity-50">
+                <rect x="10" y="10" width="300" height="500" rx="12" stroke-width="2"/>
+                <rect x="25" y="25" width="270" height="470" rx="6" stroke-width="1" opacity="0.5"/>
+                <path d="M 25 45 L 25 25 L 45 25 M 295 45 L 295 25 L 275 25 M 25 475 L 25 495 L 45 495 M 295 475 L 295 495 L 275 495" stroke-width="1.5"/>
+                <circle cx="25" cy="25" r="2" fill="#B8A26A"/><circle cx="295" cy="25" r="2" fill="#B8A26A"/>
+                <circle cx="25" cy="495" r="2" fill="#B8A26A"/><circle cx="295" cy="495" r="2" fill="#B8A26A"/>
+                <path d="M 40 140 L 280 140" stroke-width="0.75" opacity="0.3"/>
+                <g transform="translate(160, 140)">
+                  <circle cx="0" cy="0" r="70" stroke-width="1" stroke-dasharray="3 8" opacity="0.6"/>
+                  <path d="M 0 -55 L 10 -15 L 50 -15 L 15 5 L 25 45 L 0 20 L -25 45 L -15 5 L -50 -15 L -10 -15 Z" stroke-width="1.5" stroke-linejoin="miter"/>
+                  <circle cx="0" cy="0" r="4" fill="#B8A26A"/>
+                  <path d="M 0 -85 L 0 -65 M 0 65 L 0 85 M -85 0 L -65 0 M 65 0 L 85 0" stroke-width="1.5"/>
+                </g>
+                <text x="160" y="370" text-anchor="middle" font-family="Montserrat, sans-serif" font-size="13" fill="#B8A26A" opacity="0.5" letter-spacing="4" font-weight="300">FUTURO</text>
+                <path d="M 160 480 L 165 485 L 160 490 L 155 485 Z" fill="#B8A26A"/>
+              </svg>
             </div>
 
           </div>
@@ -118,11 +140,93 @@ import DecoArt from "../components/DecoArt.astro";
     </div>
   </section>
 
+<style>
+  /* ── Hero: texto desde izquierda, cartas desde derecha ── */
+  .sobre-text {
+    opacity: 0;
+    transform: translateX(-24px);
+    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .sobre-text.in { opacity: 1; transform: translateX(0); }
+
+  .sobre-cards {
+    opacity: 0;
+    transform: translateX(24px);
+    transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1), transform 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: 100ms;
+  }
+  .sobre-cards.in { opacity: 1; transform: translateX(0); }
+
+  .spread-card {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
+  .sobre-cards.in .spread-card:nth-child(1) { opacity: 1; transition-delay: 180ms; }
+  .sobre-cards.in .spread-card:nth-child(2) { opacity: 1; transition-delay: 310ms; }
+  .sobre-cards.in .spread-card:nth-child(3) { opacity: 1; transition-delay: 180ms; }
+
+  /* ── Sistema genérico data-reveal ── */
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(14px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  [data-reveal="fade"] {
+    opacity: 0;
+    transform: none;
+    transition: opacity 0.5s ease;
+  }
+  [data-reveal].in,
+  [data-reveal="fade"].in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Respeta preferencia del usuario — sin animaciones */
+  @media (prefers-reduced-motion: reduce) {
+    .sobre-text, .sobre-cards, .spread-card,
+    [data-reveal], [data-reveal="fade"] {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+</style>
+
+<script>
+  function initSobre() {
+    // Un solo observer para toda la página
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          const el = entry.target as HTMLElement;
+          const delay = el.dataset.delay ? parseInt(el.dataset.delay) : 0;
+          if (delay) {
+            setTimeout(() => el.classList.add("in"), delay);
+          } else {
+            el.classList.add("in");
+          }
+          observer.unobserve(el);
+        });
+      },
+      { threshold: 0.08 }
+    );
+
+    document
+      .querySelectorAll<HTMLElement>(".sobre-text, .sobre-cards, [data-reveal]")
+      .forEach((el) => observer.observe(el));
+  }
+
+  document.addEventListener("astro:page-load", initSobre);
+  document.addEventListener("DOMContentLoaded", initSobre);
+</script>
+
   <section
     class="relative border-y border-brand-gold/5 bg-[#07070b] py-12 md:py-16"
   >
     <div class="mx-auto max-w-xl px-6 text-center">
-      <blockquote>
+      <blockquote data-reveal="fade">
         <p
           class="font-heading text-lg font-light italic leading-relaxed text-brand-gold/70 sm:text-xl md:text-2xl"
         >
@@ -140,19 +244,20 @@ import DecoArt from "../components/DecoArt.astro";
     />
 
     <div class="relative z-10 mx-auto max-w-5xl px-6 md:px-8">
-      <h2
-        class="text-center font-heading text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold sm:text-sm sm:tracking-[0.25em]"
-      >
-        Nuestro enfoque
-      </h2>
-
-      <div
-        class="mx-auto mt-4 flex items-center justify-center gap-3"
-        aria-hidden="true"
-      >
-        <span class="h-px w-8 bg-brand-gold/15"></span>
-        <span class="h-1 w-1 rounded-full bg-brand-gold/25"></span>
-        <span class="h-px w-8 bg-brand-gold/15"></span>
+      <div data-reveal>
+        <h2
+          class="text-center font-heading text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold sm:text-sm sm:tracking-[0.25em]"
+        >
+          Nuestro enfoque
+        </h2>
+        <div
+          class="mx-auto mt-4 flex items-center justify-center gap-3"
+          aria-hidden="true"
+        >
+          <span class="h-px w-8 bg-brand-gold/15"></span>
+          <span class="h-1 w-1 rounded-full bg-brand-gold/25"></span>
+          <span class="h-px w-8 bg-brand-gold/15"></span>
+        </div>
       </div>
 
       <div class="mt-12 grid gap-5 sm:grid-cols-3 md:mt-16 md:gap-6">
@@ -175,8 +280,8 @@ import DecoArt from "../components/DecoArt.astro";
                 icon: "compass",
               },
             ] as const
-          ).map((card) => (
-            <article class="group relative overflow-hidden rounded-lg border border-brand-gold/10 bg-[#09090f] p-6 text-center transition-all duration-500 hover:-translate-y-1 hover:border-brand-gold/30 hover:shadow-[0_10px_40px_-10px_rgba(184,162,106,0.15)] sm:p-7 md:p-8">
+          ).map((card, i) => (
+            <article data-reveal data-delay={i * 80} class="group relative overflow-hidden rounded-lg border border-brand-gold/10 bg-[#09090f] p-6 text-center transition-[border-color,box-shadow,transform] duration-500 hover:-translate-y-1 hover:border-brand-gold/30 hover:shadow-[0_10px_40px_-10px_rgba(184,162,106,0.15)] sm:p-7 md:p-8">
               <div
                 class="pointer-events-none absolute inset-[4px] rounded-[4px] border border-brand-gold/5 transition-all duration-500 group-hover:border-brand-gold/15"
                 aria-hidden="true"
@@ -279,17 +384,18 @@ import DecoArt from "../components/DecoArt.astro";
     <div class="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(184,162,106,0.07)_0%,transparent_55%)]" aria-hidden="true"></div>
 
     <div class="relative z-10 mx-auto max-w-5xl px-6 md:px-8">
-      <h2 class="text-center font-heading text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold sm:text-sm sm:tracking-[0.25em]">
-        Cómo es una consulta
-      </h2>
-
-      <div class="mx-auto mt-4 flex items-center justify-center gap-3" aria-hidden="true">
-        <span class="h-px w-8 bg-brand-gold/15"></span>
-        <span class="h-1 w-1 rounded-full bg-brand-gold/25"></span>
-        <span class="h-px w-8 bg-brand-gold/15"></span>
+      <div data-reveal>
+        <h2 class="text-center font-heading text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold sm:text-sm sm:tracking-[0.25em]">
+          Cómo es una consulta
+        </h2>
+        <div class="mx-auto mt-4 flex items-center justify-center gap-3" aria-hidden="true">
+          <span class="h-px w-8 bg-brand-gold/15"></span>
+          <span class="h-1 w-1 rounded-full bg-brand-gold/25"></span>
+          <span class="h-px w-8 bg-brand-gold/15"></span>
+        </div>
       </div>
 
-      <p class="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-brand-text/55 sm:text-base">
+      <p data-reveal="fade" class="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-brand-text/55 sm:text-base">
         Cada sesión sigue un pequeño ritual de claridad: abrimos el espacio, leemos el símbolo y lo aterrizamos a tu vida real.
       </p>
 
@@ -303,7 +409,7 @@ import DecoArt from "../components/DecoArt.astro";
                   step: "01",
                   title: "Apertura del espacio",
                   text: "Comenzamos con una conversación breve para centrar el tema y tu intención. Aquí ordenamos la pregunta para que la lectura sea útil de verdad.",
-                  takeaway: "Te llevas foco y dirección desde el minuto uno.",
+                  takeaway: "Hacemos consciente lo inconsciente.",
                 },
                 {
                   step: "02",
@@ -318,8 +424,8 @@ import DecoArt from "../components/DecoArt.astro";
                   takeaway: "Te llevas claridad accionable, no promesas vacías.",
                 },
               ] as const
-            ).map((item) => (
-              <article class="group relative overflow-hidden rounded-lg border border-brand-gold/10 bg-[#09090f] p-6 text-left transition-all duration-500 hover:border-brand-gold/30 hover:shadow-[0_0_30px_-10px_rgba(184,162,106,0.18)] sm:p-8 md:pl-16">
+            ).map((item, i) => (
+              <article data-reveal data-delay={i * 90} class="group relative overflow-hidden rounded-lg border border-brand-gold/10 bg-[#09090f] p-6 text-left transition-[border-color,box-shadow] duration-500 hover:border-brand-gold/30 hover:shadow-[0_0_30px_-10px_rgba(184,162,106,0.18)] sm:p-8 md:pl-16">
                 <div class="absolute left-5 top-7 z-10 hidden h-8 w-8 items-center justify-center rounded-full border border-brand-gold/30 bg-[#0d0d14] font-heading text-[10px] tracking-widest text-brand-gold/80 md:flex">
                   {item.step}
                 </div>
@@ -354,17 +460,18 @@ import DecoArt from "../components/DecoArt.astro";
     />
 
     <div class="relative z-10 mx-auto max-w-5xl px-6 md:px-8">
-      <h2 class="text-center font-heading text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold sm:text-sm sm:tracking-[0.25em]">
-        Qué no hacemos
-      </h2>
-
-      <div class="mx-auto mt-4 flex items-center justify-center gap-3" aria-hidden="true">
-        <span class="h-px w-8 bg-brand-gold/15"></span>
-        <span class="h-1 w-1 rounded-full bg-brand-gold/25"></span>
-        <span class="h-px w-8 bg-brand-gold/15"></span>
+      <div data-reveal>
+        <h2 class="text-center font-heading text-xs font-semibold uppercase tracking-[0.2em] text-brand-gold sm:text-sm sm:tracking-[0.25em]">
+          Qué no hacemos
+        </h2>
+        <div class="mx-auto mt-4 flex items-center justify-center gap-3" aria-hidden="true">
+          <span class="h-px w-8 bg-brand-gold/15"></span>
+          <span class="h-1 w-1 rounded-full bg-brand-gold/25"></span>
+          <span class="h-px w-8 bg-brand-gold/15"></span>
+        </div>
       </div>
 
-      <p class="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-brand-text/50 sm:text-base">
+      <p data-reveal="fade" class="mx-auto mt-6 max-w-2xl text-center text-sm leading-relaxed text-brand-text/50 sm:text-base">
         Nuestros límites éticos son parte del servicio. Cuidamos tu proceso para que la consulta te fortalezca, no te confunda.
       </p>
 
@@ -388,8 +495,8 @@ import DecoArt from "../components/DecoArt.astro";
                 icon: "circle",
               },
             ] as const
-          ).map((item) => (
-            <article class="group relative overflow-hidden rounded-lg border border-brand-gold/10 bg-[#0a0a10] p-6 transition-all duration-500 hover:border-brand-gold/30 hover:shadow-[0_0_30px_-12px_rgba(184,162,106,0.2)]">
+          ).map((item, i) => (
+            <article data-reveal data-delay={i * 80} class="group relative overflow-hidden rounded-lg border border-brand-gold/10 bg-[#0a0a10] p-6 transition-[border-color,box-shadow] duration-500 hover:border-brand-gold/30 hover:shadow-[0_0_30px_-12px_rgba(184,162,106,0.2)]">
               <div class="mb-5 text-brand-gold/50 transition-colors duration-500 group-hover:text-brand-gold">
                 {item.icon === "shield" && (
                   <svg
@@ -450,7 +557,7 @@ import DecoArt from "../components/DecoArt.astro";
 
   <section class="bg-[#07070b] py-12 md:py-16">
     <div class="mx-auto max-w-xl px-6 text-center">
-      <blockquote>
+      <blockquote data-reveal="fade">
         <p
           class="font-heading text-base italic leading-relaxed text-brand-gold/50 sm:text-lg md:text-xl"
         >
@@ -468,7 +575,7 @@ import DecoArt from "../components/DecoArt.astro";
     >
     </div>
 
-    <div class="relative z-10 mx-auto max-w-md px-6 text-center">
+    <div data-reveal class="relative z-10 mx-auto max-w-md px-6 text-center">
       <div
         class="mx-auto mb-6 flex h-12 w-12 items-center justify-center rounded-full border border-brand-gold/20 bg-brand-gold/5 sm:mb-8"
         aria-hidden="true"
