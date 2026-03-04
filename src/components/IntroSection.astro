@@ -171,7 +171,7 @@ import DecoArt from "./DecoArt.astro";
         <div class="pointer-events-none absolute -bottom-6 -right-6 h-28 w-28 rounded-full bg-brand-gold/6 blur-2xl transition-all duration-700 group-hover:bg-brand-gold/14" aria-hidden="true"></div>
 
         <!-- Watermark diamond -->
-        <div class="pointer-events-none absolute inset-0 flex items-center justify-center opacity-[0.055] group-hover:opacity-[0.09] transition-opacity duration-500" aria-hidden="true">
+        <div class="quote-watermark pointer-events-none absolute inset-0 flex items-center justify-center group-hover:opacity-[0.12] transition-opacity duration-500" aria-hidden="true">
           <svg viewBox="0 0 200 200" class="h-52 w-52 text-brand-gold" fill="none" stroke="currentColor" stroke-width="0.6">
             <polygon points="100,8 192,100 100,192 8,100"/>
             <polygon points="100,28 172,100 100,172 28,100"/>
@@ -279,12 +279,22 @@ import DecoArt from "./DecoArt.astro";
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0.035;
+    /* Móvil: más visible para que se aprecie el detalle decorativo */
+    opacity: 0.065;
     filter: blur(1px);
     pointer-events: none;
     transition: opacity 0.5s ease;
   }
-  .bento-card:hover .card-watermark { opacity: 0.065; }
+  @media (min-width: 768px) {
+    .card-watermark { opacity: 0.035; }
+  }
+  .bento-card:hover .card-watermark { opacity: 0.09; }
+
+  /* Watermark diamante en móvil más visible */
+  .quote-watermark { opacity: 0.09; }
+  @media (min-width: 768px) {
+    .quote-watermark { opacity: 0.055; }
+  }
 </style>
 
 <script>

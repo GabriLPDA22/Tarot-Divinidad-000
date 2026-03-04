@@ -120,7 +120,8 @@
 }
 
 .hero-deco {
-  opacity: calc(var(--deco-opacity, 0.08) * 0.35);
+  /* Opacidad completa: cartas de tarot (sol, luna, etc.) visibles en móvil y desktop */
+  opacity: var(--deco-opacity, 0.08);
   transition: opacity 0.3s ease;
 }
 
@@ -131,18 +132,6 @@
 
 [data-parallax-el] {
   transform: translate3d(0, var(--parallax-offset, 0px), 0);
-}
-
-@media (min-width: 768px) {
-  .hero-deco {
-    opacity: calc(var(--deco-opacity, 0.08) * 0.7);
-  }
-}
-
-@media (min-width: 1280px) {
-  .hero-deco {
-    opacity: var(--deco-opacity, 0.08);
-  }
 }
 
 @media (min-width: 2560px) {
