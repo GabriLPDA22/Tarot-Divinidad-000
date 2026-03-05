@@ -4,8 +4,8 @@
   "description": "Consulta de tarot por teléfono. Acompañamiento consciente.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#0B0B0F",
-  "theme_color": "#0B0B0F",
+  "background_color": "#101018",
+  "theme_color": "#101018",
   "icons": [
     {
       "src": "/icon-192.png",

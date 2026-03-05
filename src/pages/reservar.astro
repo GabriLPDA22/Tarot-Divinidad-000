@@ -88,31 +88,33 @@ const schemas = [professionalServiceSchema, faqSchema];
 
     <div class="relative z-10 mx-auto max-w-6xl px-6 md:px-8 3xl:max-w-7xl 3xl:px-12" data-parallax-el="0.05">
       <!-- Title -->
-      <h1 class="text-center font-heading text-sm font-semibold uppercase tracking-[0.25em] text-brand-gold md:text-base 3xl:text-lg">
-        Reserva tu consulta
-      </h1>
+      <div class="reservar-header">
+        <h1 class="text-center font-heading text-sm font-semibold uppercase tracking-[0.25em] text-brand-gold md:text-base 3xl:text-lg">
+          Reserva tu consulta
+        </h1>
 
-      <div class="mx-auto mt-5 flex items-center justify-center gap-4" aria-hidden="true">
-        <span class="h-px w-12 bg-gradient-to-r from-transparent to-brand-gold/30"></span>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4 text-brand-gold/60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z"/>
-          <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
-        </svg>
-        <span class="h-px w-12 bg-gradient-to-l from-transparent to-brand-gold/30"></span>
+        <div class="mx-auto mt-5 flex items-center justify-center gap-4" aria-hidden="true">
+          <span class="h-px w-12 bg-gradient-to-r from-transparent to-brand-gold/30"></span>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4 text-brand-gold/60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2 L14 10 L22 12 L14 14 L12 22 L10 14 L2 12 L10 10 Z"/>
+            <circle cx="12" cy="12" r="1.5" fill="currentColor" stroke="none"/>
+          </svg>
+          <span class="h-px w-12 bg-gradient-to-l from-transparent to-brand-gold/30"></span>
+        </div>
+
+        <p class="mx-auto mt-6 max-w-xl text-center text-base leading-relaxed text-brand-text/75 md:mt-8 md:text-lg">
+          Elige la tirada que necesitas y selecciona día y hora en el calendario. Tu reserva se confirma automáticamente.
+        </p>
       </div>
-
-      <p class="mx-auto mt-6 max-w-xl text-center text-base leading-relaxed text-brand-text/75 md:mt-8 md:text-lg">
-        Elige la tirada que necesitas y selecciona día y hora en el calendario. Tu reserva se confirma automáticamente.
-      </p>
 
       <!-- Tarot cards grid -->
       <div class="mt-14 grid grid-cols-2 gap-4 lg:grid-cols-4 md:mt-16 md:gap-6 3xl:mt-20 3xl:gap-8" data-parallax-el="0.03">
-        {tiers.map((tier) => {
+        {tiers.map((tier, i) => {
           const bookingUrl = reservaLinks[tier.linkKey];
           const waUrl = getWhatsAppUrl(tier.duration, tier.price);
 
           return (
-            <article class="tarot-price-card group relative transition-all duration-500 hover:-translate-y-2">
+            <article class={`tarot-price-card tarot-price-card--${i + 1} group relative transition-all duration-500 hover:-translate-y-2`}>
               <div class="relative" style="aspect-ratio: 320 / 520;">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -232,7 +234,7 @@ const schemas = [professionalServiceSchema, faqSchema];
       </div>
 
       <!-- FAQ -->
-      <div class="mx-auto mt-24 max-w-3xl md:mt-32">
+      <div class="faq-section mx-auto mt-24 max-w-3xl md:mt-32">
         <h2 class="text-center font-heading text-sm font-semibold uppercase tracking-[0.25em] text-brand-gold md:text-base">
           Preguntas frecuentes
         </h2>
@@ -245,27 +247,36 @@ const schemas = [professionalServiceSchema, faqSchema];
 
         <div class="mt-10 space-y-4 md:mt-12">
           {faqs.map((faq) => (
-            <details class="group rounded-lg border border-brand-gold/10 bg-[#0e0e14] transition-colors hover:border-brand-gold/20">
-              <summary class="flex cursor-pointer items-center justify-between px-5 py-4 font-heading text-sm font-medium text-brand-text/90 md:px-6 md:py-5 md:text-base">
-                <span>{faq.q}</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-4 w-4 shrink-0 text-brand-gold/50 transition-transform duration-300 group-open:rotate-45"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <line x1="12" y1="5" x2="12" y2="19"></line>
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                </svg>
-              </summary>
-              <div class="border-t border-brand-gold/5 px-5 pb-5 pt-4 md:px-6">
-                <p class="text-[0.9375rem] leading-relaxed text-brand-text/65">{faq.a}</p>
+            <div class="faq-item group rounded-lg border border-brand-gold/10 bg-[#101016] transition-colors duration-300 hover:border-brand-gold/20" data-faq-item>
+              <button
+                type="button"
+                class="faq-trigger flex w-full cursor-pointer items-center justify-between gap-4 px-5 py-4 text-left font-heading text-sm font-medium text-brand-text/90 md:px-6 md:py-5 md:text-base"
+                aria-expanded="false"
+                data-faq-trigger
+              >
+                <span class="transition-colors duration-300 group-[.faq-open]:text-brand-text">{faq.q}</span>
+                <span class="faq-icon flex h-6 w-6 flex-shrink-0 items-center justify-center rounded-md transition-all duration-200 group-[.faq-open]:bg-brand-gold/15 group-[.faq-open]:text-brand-gold">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-3.5 w-3.5 transition-transform duration-200 ease-out group-[.faq-open]:rotate-45"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                </span>
+              </button>
+              <div class="faq-accordion">
+                <div class="faq-accordion-inner">
+                  <p class="border-t border-brand-gold/5 px-5 pb-5 pt-4 text-[0.9375rem] leading-relaxed text-brand-text/65 md:px-6">{faq.a}</p>
+                </div>
               </div>
-            </details>
+            </div>
           ))}
         </div>
       </div>
@@ -273,3 +284,116 @@ const schemas = [professionalServiceSchema, faqSchema];
   </main>
   <Footer />
 </BaseLayout>
+
+<style>
+  /* ── Animaciones de entrada (igual que IntroSection / ServicesSection) ── */
+  .reservar-header,
+  .tarot-price-card,
+  .faq-section {
+    opacity: 0;
+    transform: scale(0.97) translateY(16px);
+  }
+  .reservar-header {
+    transition: opacity 0.5s ease, transform 0.5s ease;
+  }
+  .tarot-price-card {
+    transition:
+      opacity 0.55s ease,
+      transform 0.55s ease,
+      box-shadow 0.4s ease;
+  }
+  .faq-section {
+    transition: opacity 0.55s ease, transform 0.55s ease;
+  }
+  .reservar-header.is-visible,
+  .tarot-price-card.is-visible,
+  .faq-section.is-visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+
+  /* Delays escalonados para las cartas */
+  .tarot-price-card--1 { transition-delay: 0ms; }
+  .tarot-price-card--2 { transition-delay: 80ms; }
+  .tarot-price-card--3 { transition-delay: 160ms; }
+  .tarot-price-card--4 { transition-delay: 240ms; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reservar-header,
+    .tarot-price-card,
+    .faq-section {
+      opacity: 1 !important;
+      transform: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* ── FAQ accordion: animación suave al abrir Y cerrar (control con JS) ── */
+  .faq-accordion {
+    display: grid;
+    grid-template-rows: 0fr;
+    transition: grid-template-rows 0.35s cubic-bezier(0.25, 0.4, 0.25, 1);
+  }
+  .faq-item.faq-open .faq-accordion {
+    grid-template-rows: 1fr;
+  }
+  .faq-accordion-inner {
+    overflow: hidden;
+  }
+  .faq-accordion-inner p {
+    opacity: 0;
+    transition: opacity 0.25s cubic-bezier(0.25, 0.4, 0.25, 1) 0.08s;
+  }
+  .faq-item.faq-open .faq-accordion-inner p {
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .faq-accordion,
+    .faq-accordion-inner p {
+      transition: none !important;
+    }
+    .faq-item.faq-open .faq-accordion-inner p {
+      opacity: 1;
+    }
+  }
+</style>
+
+<script>
+  function initReservarAnimations() {
+    const targets = document.querySelectorAll<HTMLElement>(
+      ".reservar-header, .tarot-price-card, .faq-section"
+    );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            (entry.target as HTMLElement).classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.08 }
+    );
+    targets.forEach((el) => observer.observe(el));
+  }
+
+  function initFaqAccordion() {
+    document.querySelectorAll("[data-faq-item]").forEach((item) => {
+      const trigger = item.querySelector("[data-faq-trigger]");
+      if (!trigger) return;
+      trigger.addEventListener("click", () => {
+        const isOpen = item.classList.toggle("faq-open");
+        (trigger as HTMLElement).setAttribute("aria-expanded", String(isOpen));
+      });
+    });
+  }
+
+  document.addEventListener("astro:page-load", () => {
+    initReservarAnimations();
+    initFaqAccordion();
+  });
+  document.addEventListener("DOMContentLoaded", () => {
+    initReservarAnimations();
+    initFaqAccordion();
+  });
+</script>

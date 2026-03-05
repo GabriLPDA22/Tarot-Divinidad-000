@@ -50,7 +50,7 @@ const ogImageUrl = ogImage.startsWith("http") ? ogImage : new URL(ogImage, Astro
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0B0B0F" />
+    <meta name="theme-color" content="#101018" />
 
     <link rel="canonical" href={canonicalURL} />
 
@@ -87,6 +87,12 @@ const ogImageUrl = ogImage.startsWith("http") ? ogImage : new URL(ogImage, Astro
     <title>{title}</title>
   </head>
   <body class="min-h-screen bg-brand-bg text-brand-text font-body">
+    <script is:inline>
+      // Al recargar (F5) o cargar la página, ir siempre a top 0
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      window.scrollTo(0, 0);
+      window.addEventListener("pageshow", function () { window.scrollTo(0, 0); });
+    </script>
     <LoaderOverlay />
     <FrameBorder />
     <div class="relative z-[1]">
