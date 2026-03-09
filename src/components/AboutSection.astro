@@ -29,35 +29,21 @@ import DecoArt from "./DecoArt.astro";
         </div>
 
         <div
-          class="relative z-10 aspect-[3/4] w-full overflow-hidden rounded-t-full bg-[#0C0C12] p-1 ring-1 ring-brand-gold/30"
+          class="relative z-10 aspect-[3/4] w-full overflow-hidden rounded-t-full bg-[#0e0a0b] p-1 ring-1 ring-brand-gold/30"
         >
           <div
-            class="relative flex h-full w-full items-center justify-center overflow-hidden rounded-t-full border border-brand-gold/20 bg-[#111116]"
+            class="relative flex h-full w-full overflow-hidden rounded-t-full"
           >
-            <div
-              class="flex flex-col items-center gap-4 opacity-30 text-brand-gold"
-            >
-              <svg
-                class="h-16 w-16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1"
-              >
-                <path d="M12 2a10 10 0 1 0 10 10 H22 A10 10 0 0 0 12 2 Z"
-                ></path>
-                <path d="M12 2a15 15 0 0 1 7 10H5a15 15 0 0 1 7-10z"></path>
-                <path d="M12 22a15 15 0 0 0 7-10H5a15 15 0 0 0 7 10z"></path>
-              </svg>
-              <span class="font-heading text-xs tracking-widest uppercase"
-                >Tu Esencia Aquí</span
-              >
-            </div>
-
-            <div
-              class="absolute inset-0 bg-gradient-to-t from-[#06060a] via-transparent to-transparent"
-            >
-            </div>
+            <img
+              src="/images/Carta.jpg"
+              alt="Consulta de tarot — Tarot Divinidad 000"
+              class="h-full w-full object-cover object-center"
+              loading="lazy"
+              decoding="async"
+            />
+            <!-- Mask: oscurece sin tapar, mantiene los colores vivos -->
+            <div class="absolute inset-0 bg-[#120c0e]/20"></div>
+            <div class="absolute inset-0 bg-gradient-to-t from-[#060304]/50 via-transparent to-transparent"></div>
           </div>
         </div>
 

@@ -7,14 +7,14 @@ export const siteConfig = {
   reservaUrl: "https://RESERVA_URL_PLACEHOLDER",
 
   reservaLinks: {
-    m20: "https://RESERVA_20MIN_PLACEHOLDER",
-    m30: "https://RESERVA_30MIN_PLACEHOLDER",
-    m45: "https://RESERVA_45MIN_PLACEHOLDER",
-    m60: "https://RESERVA_60MIN_PLACEHOLDER",
+    m20: "https://calendly.com/divinidadenergia/new-meeting",
+    m30: "https://calendly.com/divinidadenergia/30min",
+    m45: "https://calendly.com/divinidadenergia/45-minute-meeting",
+    m60: "https://calendly.com/divinidadenergia/60-minute-meeting",
   },
 
   whatsapp: {
-    phone: "34600000000",
+    phone: "34638142775",
     message:
       "Hola, me gustaría reservar una consulta de tarot con Tarot Divinidad 000.",
     messageTemplate:
@@ -39,7 +39,10 @@ export const siteConfig = {
 
   contact: {
     email: "divinidadenergia@gmail.com",
-    phone: "34600000000",
+    phone: "34638142775",
+    address: "C. Delicias, 32",
+    city: "50600 Ejea de los Caballeros, Zaragoza",
+    mapsUrl: "https://share.google/K7gWCK2JJby9GNSvn",
   },
 
   tiers: [

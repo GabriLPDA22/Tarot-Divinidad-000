@@ -8,7 +8,7 @@ module.exports = {
       },
       colors: {
         brand: {
-          bg: "#101018",
+          bg: "#120c0e",
           text: "#F2F0EA",
           gold: "#B8A26A",
           "gold-light": "#D4C28A",

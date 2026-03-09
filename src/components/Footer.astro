@@ -14,6 +14,7 @@ const navLinks = [
   { label: "Reservar", href: "/reservar" },
   { label: "Sobre nosotros", href: "/sobre" },
   { label: "Contacto", href: "/#contacto" },
+  { label: "Ubicación", href: "/#ubicacion" },
 ];
 
 const legalLinks = [
@@ -23,7 +24,7 @@ const legalLinks = [
 ];
 ---
 
-<footer class="relative overflow-hidden bg-[#050508]">
+<footer class="relative overflow-hidden bg-[#060304]">
   <!-- Ambient glow -->
   <div
     class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_20%_0%,rgba(184,162,106,0.06)_0%,transparent_65%)]"
@@ -105,6 +106,16 @@ const legalLinks = [
       </div>
     </div>
 
+    <!-- Horario móvil — centrado -->
+    <div class="flex flex-col items-center gap-1.5 md:hidden mb-6">
+      <p class="text-[9px] font-semibold uppercase tracking-[0.3em] text-brand-gold/70">
+        Horario de atención
+      </p>
+      <p class="text-[10px] tracking-wide text-brand-text/55">
+        De 10:00 a 12:00 y de 18:00 a 21:00
+      </p>
+    </div>
+
     <!-- Contacto móvil — centrado -->
     <div class="flex flex-col items-center gap-1.5 md:hidden mb-2">
       <a href={`mailto:${siteConfig.contact.email}`} class="text-[10px] tracking-wide text-brand-text/55 transition-colors duration-200 hover:text-brand-gold">
@@ -112,6 +123,15 @@ const legalLinks = [
       </a>
       <a href={`tel:+${siteConfig.contact.phone}`} class="text-[10px] tracking-wide text-brand-text/55 transition-colors duration-200 hover:text-brand-gold">
         {formattedPhone}
+      </a>
+      <a
+        href={siteConfig.contact.mapsUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-1 flex flex-col items-center gap-0.5 text-center text-[10px] tracking-wide text-brand-text/55 transition-colors duration-200 hover:text-brand-gold"
+      >
+        <span>{siteConfig.contact.address}</span>
+        <span>{siteConfig.contact.city}</span>
       </a>
     </div>
 
@@ -188,6 +208,23 @@ const legalLinks = [
           <a href={`tel:+${siteConfig.contact.phone}`} class="text-[10px] tracking-wide text-brand-text/55 transition-colors duration-200 hover:text-brand-gold">
             {formattedPhone}
           </a>
+          <a
+            href={siteConfig.contact.mapsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-1 flex flex-col gap-0.5 text-[10px] tracking-wide text-brand-text/55 transition-colors duration-200 hover:text-brand-gold"
+          >
+            <span>{siteConfig.contact.address}</span>
+            <span>{siteConfig.contact.city}</span>
+          </a>
+        </div>
+        <div class="mt-4 flex flex-col gap-1.5">
+          <p class="text-[9px] font-semibold uppercase tracking-[0.3em] text-brand-gold/60">
+            Horario de atención
+          </p>
+          <p class="text-[10px] leading-relaxed tracking-wide text-brand-text/50">
+            De 10:00 a 12:00 y de 18:00 a 21:00
+          </p>
         </div>
         <p class="mt-auto pt-4 text-[10px] tracking-wide text-brand-text/40">
           Web por <a href="https://gabrielcodes.dev/" target="_blank" rel="noopener noreferrer" class="transition-colors duration-200 hover:text-brand-gold">Gabriel Saiz</a>
@@ -224,7 +261,7 @@ const legalLinks = [
 <button
   id="back-to-top-mobile"
   aria-label="Volver arriba"
-  class="fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center border border-brand-gold/30 bg-[#050508]/90 text-brand-gold/60 shadow-lg shadow-black/40 backdrop-blur-sm transition-all duration-300 hover:border-brand-gold/70 hover:text-brand-gold md:hidden opacity-0 pointer-events-none translate-y-3"
+  class="fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center border border-brand-gold/30 bg-[#060304]/90 text-brand-gold/60 shadow-lg shadow-black/40 backdrop-blur-sm transition-all duration-300 hover:border-brand-gold/70 hover:text-brand-gold md:hidden opacity-0 pointer-events-none translate-y-3"
 >
   <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <polyline points="18 15 12 9 6 15"></polyline>
