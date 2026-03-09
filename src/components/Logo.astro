@@ -12,67 +12,10 @@ const viewBox = centered ? "0 0 652 150" : "0 0 520 150";
   class:list={["group block shrink-0 transition-opacity hover:opacity-85", className]}
   aria-label="Tarot Divinidad 000 — Inicio"
 >
-  <!-- ── MÓVIL: versión apilada (icono arriba + texto abajo) ── -->
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 220 190"
-    class="h-16 w-auto sm:hidden"
-    aria-hidden="true"
-  >
-    <defs>
-      <style>
-        .logo-g  { stroke: #C7A85A; fill: none; stroke-linecap: round; stroke-linejoin: round; }
-        .logo-gf { fill: #C7A85A; }
-      </style>
-      <clipPath id="icon-clip-mobile">
-        <rect x="25" y="0" width="170" height="118"/>
-      </clipPath>
-    </defs>
-
-    <!-- Trinqueta centrada -->
-    <image
-      href="/images/trinqueta.png"
-      x="-65" y="-115"
-      width="350" height="350"
-      style="mix-blend-mode: screen"
-      clip-path="url(#icon-clip-mobile)"
-    />
-
-    <!-- "TAROT DIVINIDAD" centrado -->
-    <text
-      x="110" y="143"
-      font-size="19"
-      fill="#F4EEE6"
-      font-family="'Montserrat', sans-serif"
-      letter-spacing="3"
-      font-weight="600"
-      text-anchor="middle"
-    >TAROT DIVINIDAD</text>
-
-    <!-- Línea separadora -->
-    <line x1="28" y1="155" x2="192" y2="155" stroke="#C7A85A" stroke-width="0.7" opacity="0.35"/>
-    <circle cx="110" cy="155" r="2" fill="#C7A85A"/>
-    <path d="M 105 155 L 110 151 L 115 155 L 110 159 Z" fill="#C7A85A"/>
-
-    <!-- 000 -->
-    <text
-      font-size="13"
-      fill="#C7A85A"
-      font-family="'Montserrat', sans-serif"
-      font-weight="300"
-      text-anchor="middle"
-    >
-      <tspan x="94"  y="174">0</tspan>
-      <tspan x="110" y="174">0</tspan>
-      <tspan x="126" y="174">0</tspan>
-    </text>
-  </svg>
-
-  <!-- ── DESKTOP: versión horizontal (icono + texto en línea) ── -->
   <svg
     xmlns="http://www.w3.org/2000/svg"
     viewBox={viewBox}
-    class="hidden h-14 w-auto sm:block md:h-16 lg:h-[70px] 2xl:h-20 3xl:h-[100px]"
+    class="h-11 w-auto sm:h-13 md:h-14 lg:h-[70px] 2xl:h-20 3xl:h-[100px]"
     aria-hidden="true"
   >
     <defs>
