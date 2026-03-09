@@ -50,7 +50,7 @@ const ogImageUrl = ogImage.startsWith("http") ? ogImage : new URL(ogImage, Astro
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#120c0e" />
+    <meta name="theme-color" content="#181411" />
 
     <link rel="canonical" href={canonicalURL} />
 
@@ -129,7 +129,7 @@ const ogImageUrl = ogImage.startsWith("http") ? ogImage : new URL(ogImage, Astro
             var s = stars[i];
             ctx.beginPath();
             ctx.arc(s.x * w, s.y * h, s.r, 0, Math.PI * 2);
-            ctx.fillStyle = "rgba(212,194,138," + s.a + ")";
+            ctx.fillStyle = "rgba(214,184,107," + s.a + ")";
             ctx.fill();
           }
         }

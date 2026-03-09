@@ -3,11 +3,17 @@
 @import "tailwindcss/utilities";
 
 :root {
-  --color-bg: #120c0e;
-  --color-text: #F2F0EA;
-  --color-gold: #B8A26A;
-  --color-gold-light: #D4C28A;
-  --color-gold-dark: #8A7A4E;
+  --color-bg:          #181411;
+  --color-bg-secondary:#211B17;
+  --color-bg-surface:  #26201B;
+  --color-text:        #F4EEE6;
+  --color-text-secondary: #CBBFB1;
+  --color-text-muted:  #9E8F80;
+  --color-gold:        #C7A85A;
+  --color-gold-light:  #D6B86B;
+  --color-gold-dark:   #8E6E34;
+  --color-border-soft: rgba(199,168,90,0.22);
+  --color-shadow-warm: rgba(199,168,90,0.10);
   --font-heading: "Montserrat", system-ui, sans-serif;
   --font-body: "Questrial", system-ui, sans-serif;
 }
@@ -62,7 +68,7 @@
   }
 
   ::selection {
-    background-color: rgba(184, 162, 106, 0.3);
+    background-color: rgba(199,168,90,0.28);
     color: var(--color-text);
   }
 }
@@ -76,7 +82,7 @@
     padding: 0.875rem 2rem;
     border-radius: 0.125rem;
     background-color: var(--color-gold);
-    color: var(--color-bg);
+    color: #181411;
     font-family: var(--font-heading);
     font-size: 0.875rem;
     font-weight: 600;
@@ -86,7 +92,7 @@
   }
   .btn-primary:hover {
     background-color: var(--color-gold-light);
-    box-shadow: 0 10px 15px -3px rgba(184, 162, 106, 0.2);
+    box-shadow: 0 10px 15px -3px rgba(199,168,90,0.22);
   }
   .btn-primary:focus-visible {
     outline: 2px solid var(--color-gold);
@@ -99,7 +105,7 @@
     justify-content: center;
     gap: 0.5rem;
     padding: 0.875rem 2rem;
-    border: 1px solid rgba(242, 240, 234, 0.3);
+    border: 1px solid rgba(199,168,90,0.30);
     border-radius: 0.125rem;
     color: var(--color-text);
     font-family: var(--font-heading);
@@ -110,17 +116,17 @@
     transition: all 0.3s ease-out;
   }
   .btn-secondary:hover {
-    background-color: rgba(242, 240, 234, 0.1);
-    border-color: rgba(242, 240, 234, 0.5);
+    background-color: rgba(199,168,90,0.08);
+    border-color: rgba(199,168,90,0.55);
+    color: var(--color-gold-light);
   }
   .btn-secondary:focus-visible {
-    outline: 2px solid var(--color-text);
+    outline: 2px solid var(--color-gold);
     outline-offset: 2px;
   }
 }
 
 .hero-deco {
-  /* Opacidad completa: cartas de tarot (sol, luna, etc.) visibles en móvil y desktop */
   opacity: var(--deco-opacity, 0.08);
   transition: opacity 0.3s ease;
 }

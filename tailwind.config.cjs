@@ -8,11 +8,15 @@ module.exports = {
       },
       colors: {
         brand: {
-          bg: "#120c0e",
-          text: "#F2F0EA",
-          gold: "#B8A26A",
-          "gold-light": "#D4C28A",
-          "gold-dark": "#8A7A4E",
+          bg:           "#181411",
+          "bg-secondary": "#211B17",
+          "bg-surface":  "#26201B",
+          text:          "#F4EEE6",
+          "text-secondary": "#CBBFB1",
+          "text-muted":  "#9E8F80",
+          gold:          "#C7A85A",
+          "gold-light":  "#D6B86B",
+          "gold-dark":   "#8E6E34",
         },
       },
       fontFamily: {

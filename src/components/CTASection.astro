@@ -53,8 +53,44 @@ const whatsappUrl = buildWhatsAppUrl(siteConfig.whatsapp.phone, siteConfig.whats
       </a>
     </div>
 
+    <!-- Horario -->
+    <div class="cta-schedule mx-auto mt-12 flex flex-col items-center gap-5">
+      <!-- Separador -->
+      <div class="flex items-center gap-4 w-full max-w-xs" aria-hidden="true">
+        <span class="h-px flex-1 bg-gradient-to-r from-transparent to-brand-gold/20"></span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-3.5 w-3.5 text-brand-gold/40" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+        <span class="h-px flex-1 bg-gradient-to-l from-transparent to-brand-gold/20"></span>
+      </div>
+
+      <!-- Bloque horario -->
+      <div class="flex flex-col items-center gap-1.5">
+        <p class="font-heading text-[9px] font-semibold uppercase tracking-[0.35em] text-brand-gold/50">
+          Horario de atención
+        </p>
+        <div class="mt-2 flex items-center gap-5 sm:gap-8">
+          <div class="flex flex-col items-center gap-0.5">
+            <span class="font-heading text-sm font-medium tracking-widest text-brand-text/80">10:00</span>
+            <span class="text-[9px] uppercase tracking-widest text-brand-text/35">—</span>
+            <span class="font-heading text-sm font-medium tracking-widest text-brand-text/80">12:00</span>
+          </div>
+          <span class="h-8 w-px bg-brand-gold/15" aria-hidden="true"></span>
+          <div class="flex flex-col items-center gap-0.5">
+            <span class="font-heading text-sm font-medium tracking-widest text-brand-text/80">18:00</span>
+            <span class="text-[9px] uppercase tracking-widest text-brand-text/35">—</span>
+            <span class="font-heading text-sm font-medium tracking-widest text-brand-text/80">21:00</span>
+          </div>
+        </div>
+        <p class="mt-2 text-[10px] tracking-wide text-brand-text/40">
+          También disponible por WhatsApp fuera de horario
+        </p>
+      </div>
+    </div>
+
     <!-- Bottom accent -->
-    <div class="cta-content mx-auto mt-12 flex items-center justify-center gap-3" aria-hidden="true">
+    <div class="cta-content mx-auto mt-10 flex items-center justify-center gap-3" aria-hidden="true">
       <span class="h-px w-8 bg-brand-gold/20"></span>
       <span class="h-1.5 w-1.5 rounded-full bg-brand-gold/30"></span>
       <span class="h-px w-8 bg-brand-gold/20"></span>
@@ -83,11 +119,22 @@ const whatsappUrl = buildWhatsAppUrl(siteConfig.whatsapp.phone, siteConfig.whats
   .cta-btn.is-visible { opacity: 1; transform: translateY(0); }
   .cta-btn--1 { transition-delay: 200ms; }
   .cta-btn--2 { transition-delay: 310ms; }
+
+  /* Horario: aparece al final */
+  .cta-schedule {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.55s ease 420ms, transform 0.55s ease 420ms;
+  }
+  .cta-schedule.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
 </style>
 
 <script>
   function initCTA() {
-    const targets = document.querySelectorAll<HTMLElement>(".cta-content, .cta-btn");
+    const targets = document.querySelectorAll<HTMLElement>(".cta-content, .cta-btn, .cta-schedule");
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {

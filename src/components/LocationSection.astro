@@ -1,16 +1,11 @@
 ---
-import { siteConfig } from "../content/site";
-
-const { address, city, mapsUrl } = siteConfig.contact;
-
-const mapsEmbed =
-  "https://maps.google.com/maps?q=C.+Delicias+32,+Ejea+de+los+Caballeros,+Zaragoza,+Espa%C3%B1a&output=embed";
+// Sección de horario de atención (sin dirección — es domicilio privado)
 ---
 
 <section class="relative overflow-hidden bg-brand-bg py-20 md:py-28 3xl:py-36" id="ubicacion">
   <!-- Ambient glow -->
   <div
-    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_30%_50%,rgba(184,162,106,0.05)_0%,transparent_65%)]"
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_50%_60%_at_30%_50%,rgba(199,168,90,0.06)_0%,transparent_65%)]"
     aria-hidden="true"
   ></div>
 
@@ -19,112 +14,53 @@ const mapsEmbed =
     <!-- Section header -->
     <div class="location-header mb-14 md:mb-16 3xl:mb-20">
       <h2 class="text-center font-heading text-sm font-semibold uppercase tracking-[0.25em] text-brand-gold md:text-base 3xl:text-lg">
-        Dónde estamos
+        Horario de atención
       </h2>
       <div class="mx-auto mt-5 flex items-center justify-center gap-4" aria-hidden="true">
         <span class="h-px w-12 bg-gradient-to-r from-transparent to-brand-gold/30"></span>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4 text-brand-gold/60" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-          <circle cx="12" cy="10" r="3"/>
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
         </svg>
         <span class="h-px w-12 bg-gradient-to-l from-transparent to-brand-gold/30"></span>
       </div>
     </div>
 
-    <!-- Grid: info + mapa -->
-    <div class="location-body grid grid-cols-1 gap-6 md:grid-cols-2 md:gap-8 3xl:gap-10">
+    <!-- Tarjeta horario -->
+    <div class="location-body max-w-sm mx-auto">
+      <div class="group relative overflow-hidden border border-brand-gold/15 bg-[#26201B] p-7 transition-[border-color] duration-500 hover:border-brand-gold/30 md:p-8 3xl:p-10">
+        <span class="pointer-events-none absolute top-[6px] left-[6px] h-3.5 w-3.5 border-t border-l border-brand-gold/20 transition-all duration-400 group-hover:border-brand-gold/50" aria-hidden="true"></span>
+        <span class="pointer-events-none absolute bottom-[6px] right-[6px] h-3.5 w-3.5 border-b border-r border-brand-gold/20 transition-all duration-400 group-hover:border-brand-gold/50" aria-hidden="true"></span>
 
-      <!-- Columna izquierda: info -->
-      <div class="flex flex-col gap-6 justify-center">
-
-        <!-- Dirección -->
-        <div class="group relative overflow-hidden border border-brand-gold/15 bg-[#0e0a0b] p-7 transition-[border-color] duration-500 hover:border-brand-gold/30 md:p-8 3xl:p-10">
-          <!-- Esquinas decorativas -->
-          <span class="pointer-events-none absolute top-[6px] left-[6px] h-3.5 w-3.5 border-t border-l border-brand-gold/20 transition-all duration-400 group-hover:border-brand-gold/50" aria-hidden="true"></span>
-          <span class="pointer-events-none absolute bottom-[6px] right-[6px] h-3.5 w-3.5 border-b border-r border-brand-gold/20 transition-all duration-400 group-hover:border-brand-gold/50" aria-hidden="true"></span>
-
-          <div class="flex items-start gap-4">
-            <div class="mt-0.5 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-brand-gold/25 bg-brand-gold/5 text-brand-gold 3xl:h-12 3xl:w-12">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4 3xl:h-5 3xl:w-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                <circle cx="12" cy="10" r="3"/>
-              </svg>
-            </div>
-            <div>
-              <p class="mb-1 text-[9px] font-semibold uppercase tracking-[0.3em] text-brand-gold/60">
-                Dirección
-              </p>
-              <a
-                href={mapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                class="group/link inline-flex flex-col gap-0.5 transition-colors duration-200 hover:text-brand-gold"
-              >
-                <span class="text-sm font-medium tracking-wide text-brand-text/85 3xl:text-base">{address}</span>
-                <span class="text-sm tracking-wide text-brand-text/60 3xl:text-base">{city}</span>
-                <span class="mt-1.5 flex items-center gap-1.5 text-[10px] uppercase tracking-[0.2em] text-brand-gold/50 transition-colors duration-200 group-hover/link:text-brand-gold/80">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
-                    <polyline points="15 3 21 3 21 9"/>
-                    <line x1="10" y1="14" x2="21" y2="3"/>
-                  </svg>
-                  Ver en Google Maps
-                </span>
-              </a>
-            </div>
+        <div class="flex items-start gap-4">
+          <div class="mt-0.5 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-brand-gold/25 bg-brand-gold/5 text-brand-gold 3xl:h-12 3xl:w-12">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4 3xl:h-5 3xl:w-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
           </div>
-        </div>
-
-        <!-- Horario -->
-        <div class="group relative overflow-hidden border border-brand-gold/15 bg-[#0e0a0b] p-7 transition-[border-color] duration-500 hover:border-brand-gold/30 md:p-8 3xl:p-10">
-          <span class="pointer-events-none absolute top-[6px] left-[6px] h-3.5 w-3.5 border-t border-l border-brand-gold/20 transition-all duration-400 group-hover:border-brand-gold/50" aria-hidden="true"></span>
-          <span class="pointer-events-none absolute bottom-[6px] right-[6px] h-3.5 w-3.5 border-b border-r border-brand-gold/20 transition-all duration-400 group-hover:border-brand-gold/50" aria-hidden="true"></span>
-
-          <div class="flex items-start gap-4">
-            <div class="mt-0.5 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-brand-gold/25 bg-brand-gold/5 text-brand-gold 3xl:h-12 3xl:w-12">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-4 w-4 3xl:h-5 3xl:w-5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="10"/>
-                <polyline points="12 6 12 12 16 14"/>
-              </svg>
-            </div>
-            <div class="flex flex-col gap-3">
-              <p class="text-[9px] font-semibold uppercase tracking-[0.3em] text-brand-gold/60">
-                Horario de atención
-              </p>
-              <div class="flex flex-col gap-2">
-                <div class="flex items-center gap-3">
-                  <span class="h-px w-4 bg-brand-gold/30" aria-hidden="true"></span>
-                  <span class="text-sm tracking-wide text-brand-text/75 3xl:text-base">10:00 – 12:00</span>
-                </div>
-                <div class="flex items-center gap-3">
-                  <span class="h-px w-4 bg-brand-gold/30" aria-hidden="true"></span>
-                  <span class="text-sm tracking-wide text-brand-text/75 3xl:text-base">18:00 – 21:00</span>
-                </div>
+          <div class="flex flex-col gap-3">
+            <p class="text-[9px] font-semibold uppercase tracking-[0.3em] text-brand-gold/60">
+              Disponibilidad
+            </p>
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center gap-3">
+                <span class="h-px w-4 bg-brand-gold/30" aria-hidden="true"></span>
+                <span class="text-sm tracking-wide text-brand-text/75 3xl:text-base">10:00 – 12:00</span>
               </div>
-              <p class="text-[10px] tracking-wide text-brand-text/40">
-                También disponible por WhatsApp fuera de horario
-              </p>
+              <div class="flex items-center gap-3">
+                <span class="h-px w-4 bg-brand-gold/30" aria-hidden="true"></span>
+                <span class="text-sm tracking-wide text-brand-text/75 3xl:text-base">18:00 – 21:00</span>
+              </div>
             </div>
+            <p class="text-[10px] tracking-wide text-brand-text/40">
+              También disponible por WhatsApp fuera de horario
+            </p>
           </div>
         </div>
-
       </div>
-
-      <!-- Columna derecha: mapa -->
-      <div class="location-map group relative overflow-hidden border border-brand-gold/15 transition-[border-color] duration-500 hover:border-brand-gold/30" style="min-height: 380px;">
-        <span class="pointer-events-none absolute top-[6px] left-[6px] z-10 h-3.5 w-3.5 border-t border-l border-brand-gold/20 transition-all duration-400 group-hover:border-brand-gold/50" aria-hidden="true"></span>
-        <span class="pointer-events-none absolute bottom-[6px] right-[6px] z-10 h-3.5 w-3.5 border-b border-r border-brand-gold/20 transition-all duration-400 group-hover:border-brand-gold/50" aria-hidden="true"></span>
-        <iframe
-          src={mapsEmbed}
-          title={`Mapa de ${address}, ${city}`}
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-          class="h-full w-full"
-          style="min-height: 380px; filter: grayscale(30%) sepia(20%) brightness(0.85) contrast(1.05); border: none;"
-        ></iframe>
-      </div>
-
     </div>
+
   </div>
 </section>
 

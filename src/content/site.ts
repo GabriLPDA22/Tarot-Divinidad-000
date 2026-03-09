@@ -40,9 +40,6 @@ export const siteConfig = {
   contact: {
     email: "divinidadenergia@gmail.com",
     phone: "34638142775",
-    address: "C. Delicias, 32",
-    city: "50600 Ejea de los Caballeros, Zaragoza",
-    mapsUrl: "https://share.google/K7gWCK2JJby9GNSvn",
   },
 
   tiers: [

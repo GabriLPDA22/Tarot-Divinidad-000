@@ -14,7 +14,6 @@ const navLinks = [
   { label: "Reservar", href: "/reservar" },
   { label: "Sobre nosotros", href: "/sobre" },
   { label: "Contacto", href: "/#contacto" },
-  { label: "Ubicación", href: "/#ubicacion" },
 ];
 
 const legalLinks = [
@@ -24,10 +23,10 @@ const legalLinks = [
 ];
 ---
 
-<footer class="relative overflow-hidden bg-[#060304]">
+<footer class="relative overflow-hidden bg-[#131009]">
   <!-- Ambient glow -->
   <div
-    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_20%_0%,rgba(184,162,106,0.06)_0%,transparent_65%)]"
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_60%_50%_at_20%_0%,rgba(199,168,90,0.07)_0%,transparent_65%)]"
     aria-hidden="true"
   ></div>
 
@@ -35,7 +34,7 @@ const legalLinks = [
   <div class="relative z-10 flex items-center px-8 sm:px-12" aria-hidden="true">
     <div class="h-px flex-1 bg-gradient-to-r from-transparent via-brand-gold/30 to-brand-gold/50"></div>
     <div class="mx-4 flex items-center justify-center">
-      <svg class="h-5 w-5 text-brand-gold/50" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1">
+          <svg class="h-5 w-5 text-brand-gold/55" viewBox="0 0 40 40" fill="none" stroke="currentColor" stroke-width="1">
         <path d="M20 4 L26 16 L36 20 L26 24 L20 36 L14 24 L4 20 L14 16 Z"></path>
         <circle cx="20" cy="20" r="3" fill="currentColor" opacity="0.6" stroke="none"></circle>
       </svg>
@@ -57,19 +56,19 @@ const legalLinks = [
       <!-- Socials -->
       <div class="flex items-center gap-6 mt-1">
         <a href="#" class="group" aria-label="Instagram">
-          <svg class="h-5 w-5 text-[#d4c28a] transition-all duration-300 group-hover:opacity-100 opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="h-5 w-5 text-[#D6B86B] transition-all duration-300 group-hover:opacity-100 opacity-75" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
             <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
             <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
           </svg>
         </a>
-        <a href="#" class="group" aria-label="TikTok">
-          <svg class="h-5 w-5 text-[#d4c28a] transition-all duration-300 group-hover:opacity-100 opacity-80" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+        <a href="#" class="group" aria-label="Facebook">
+          <svg class="h-5 w-5 text-[#D6B86B] transition-all duration-300 group-hover:opacity-100 opacity-75" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
           </svg>
         </a>
         <a href="#" class="group" aria-label="WhatsApp">
-          <svg class="h-5 w-5 text-[#d4c28a] opacity-80 transition-all duration-300 group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <svg class="h-5 w-5 text-[#D6B86B] opacity-75 transition-all duration-300 group-hover:opacity-100" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
           </svg>
         </a>
@@ -124,15 +123,6 @@ const legalLinks = [
       <a href={`tel:+${siteConfig.contact.phone}`} class="text-[10px] tracking-wide text-brand-text/55 transition-colors duration-200 hover:text-brand-gold">
         {formattedPhone}
       </a>
-      <a
-        href={siteConfig.contact.mapsUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        class="mt-1 flex flex-col items-center gap-0.5 text-center text-[10px] tracking-wide text-brand-text/55 transition-colors duration-200 hover:text-brand-gold"
-      >
-        <span>{siteConfig.contact.address}</span>
-        <span>{siteConfig.contact.city}</span>
-      </a>
     </div>
 
     <!-- ── DESKTOP 3 columnas ── -->
@@ -146,19 +136,19 @@ const legalLinks = [
         </p>
         <div class="flex items-center gap-5">
           <a href="#" class="group" aria-label="Instagram">
-            <svg class="h-[18px] w-[18px] text-[#d4c28a] opacity-75 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="h-[18px] w-[18px] text-[#D6B86B] opacity-75 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
               <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
               <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
             </svg>
           </a>
-          <a href="#" class="group" aria-label="TikTok">
-            <svg class="h-[18px] w-[18px] text-[#d4c28a] opacity-75 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+          <a href="#" class="group" aria-label="Facebook">
+            <svg class="h-[18px] w-[18px] text-[#D6B86B] opacity-75 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
             </svg>
           </a>
           <a href="#" class="group" aria-label="WhatsApp">
-            <svg class="h-[18px] w-[18px] text-[#d4c28a] opacity-75 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <svg class="h-[18px] w-[18px] text-[#D6B86B] opacity-75 transition-all duration-300 group-hover:opacity-100 group-hover:-translate-y-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
               <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
             </svg>
           </a>
@@ -208,15 +198,6 @@ const legalLinks = [
           <a href={`tel:+${siteConfig.contact.phone}`} class="text-[10px] tracking-wide text-brand-text/55 transition-colors duration-200 hover:text-brand-gold">
             {formattedPhone}
           </a>
-          <a
-            href={siteConfig.contact.mapsUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            class="mt-1 flex flex-col gap-0.5 text-[10px] tracking-wide text-brand-text/55 transition-colors duration-200 hover:text-brand-gold"
-          >
-            <span>{siteConfig.contact.address}</span>
-            <span>{siteConfig.contact.city}</span>
-          </a>
         </div>
         <div class="mt-4 flex flex-col gap-1.5">
           <p class="text-[9px] font-semibold uppercase tracking-[0.3em] text-brand-gold/60">
@@ -261,7 +242,7 @@ const legalLinks = [
 <button
   id="back-to-top-mobile"
   aria-label="Volver arriba"
-  class="fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center border border-brand-gold/30 bg-[#060304]/90 text-brand-gold/60 shadow-lg shadow-black/40 backdrop-blur-sm transition-all duration-300 hover:border-brand-gold/70 hover:text-brand-gold md:hidden opacity-0 pointer-events-none translate-y-3"
+  class="fixed bottom-6 right-6 z-50 flex h-11 w-11 items-center justify-center border border-brand-gold/30 bg-[#131009]/90 text-brand-gold/60 shadow-lg shadow-black/40 backdrop-blur-sm transition-all duration-300 hover:border-brand-gold/70 hover:text-brand-gold md:hidden opacity-0 pointer-events-none translate-y-3"
 >
   <svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <polyline points="18 15 12 9 6 15"></polyline>
