@@ -88,10 +88,17 @@ const ogImageUrl = ogImage.startsWith("http") ? ogImage : new URL(ogImage, Astro
   </head>
   <body class="min-h-screen bg-brand-bg text-brand-text font-body">
     <script is:inline>
-      // Al recargar (F5) o cargar la página, ir siempre a top 0
+      // Si hay hash en la URL (ej: /#contacto), dejamos que el navegador haga scroll a ese ancla.
+      // Solo forzamos top 0 cuando no hay hash.
       if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-      window.scrollTo(0, 0);
-      window.addEventListener("pageshow", function () { window.scrollTo(0, 0); });
+      if (!window.location.hash) {
+        window.scrollTo(0, 0);
+      }
+      window.addEventListener("pageshow", function () {
+        if (!window.location.hash) {
+          window.scrollTo(0, 0);
+        }
+      });
     </script>
 
     <!-- Starfield canvas — fixed, below all content -->
